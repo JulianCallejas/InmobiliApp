@@ -1,0 +1,68 @@
+Inmobistorage {
+	
+	usuarios {
+		email: string, unique, index, required
+		contrasena: string, required
+		nombre: string
+		identificacion: string
+		telefono: string
+		
+	}
+	
+	inmuebles {
+		idInmueble: int, autonumber, index
+		propietario: email, required			//Se toma el email de la coleccion usuarios del usuario que esta creando la publicacion
+		titulo: string, required
+		descripcion: string
+		especificaciones : {
+			ciudad: string, required
+			direccion: string, required
+			tipo-inmueble: string, required  
+			valorArriendo: double, required
+			valorAdmin: double
+			tamaño: int
+			estrato: int
+			habitaciones: int
+			baños: int
+			parqueadero: boolean
+		}
+		estadoPublicacion: string				//(Borrador - Publicado) para permitir al usuario agregar caracteristicas en diferentes momentos antes de publicar el inmueble. los required son solo para publicar
+		fechaPublicacion: date, required		//Se debe generar al momento de publicar el inmueble
+		arrendatario: email						//Se toma el email de la coleccion usuarios del usuario que toma en arriendo el inmueble
+		fotos: {
+			0: string/bin						//El tipo de dato depende del back para hacer la conversion y renderizacion de la imagen
+			1: string/bin
+			2: string/bin
+			3: string/bin
+			4: string/bin
+			5: string/bin
+			6: string/bin
+			7: string/bin
+			8: string/bin
+			9: string/bin
+			10: string/bin
+			11: string/bin
+			12: string/bin
+			13: string/bin
+			14: string/bin
+			15: string/bin						//El limite de fotos por publicacion es de 16 fotos
+		}
+	}
+
+	contratos {
+		idContrato: int, autonumber, index
+		idInmueble: idInmueble, required		//Se toma el idInmueble de la coleccion inmuebles
+		fechaContrato: date, required
+		fechaPublicacion: date, required		//Lo toma de la fecha de publicacion del inmueble para guardar historial
+		propietario: email, required			//Se toma el email de la coleccion inmuebles.propietario, el usuario que creo la publicacion
+		arrendatario: email, required			//Se toma el email de la coleccion usuarios del usuario que toma en arriendo el inmueble
+		duracion: int, required					//Se toma el tiempo de duracion del contrato en meses
+		valorArriendo: double, required
+		valorAdmin: double
+		activo: boolean
+		fechaTerminacion: date
+	}
+
+
+}
+

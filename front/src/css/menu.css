@@ -1,0 +1,53 @@
+
+
+.NavContec{
+  width: 100%;
+  display: contents;
+  margin: 14px;
+}
+.navReact{
+  position: relative;
+  width: 98%;
+  height: 70px;
+  padding-left: 8px;
+  background: #FF731D;
+  border-radius: 56px;
+
+  display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+  margin: 8px;
+}
+.item{
+  
+  width: 270px;
+  height: 54px;
+  left: 34px;
+  top: 26px;
+
+  background: rgba(255, 214, 142, 0.75);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 64px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.12em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.push {
+  margin-left: auto;
+}
+.user_icon{
+  
+  margin-right: 10px;
+}
+
+.menu-header {
+  width: 100%;
+}

@@ -17,7 +17,7 @@ Inmobistorage {
 		especificaciones : {
 			ciudad: string, required
 			direccion: string, required
-			tipo-inmueble: string, required  
+			tipoInmueble: string, required  
 			valorArriendo: double, required
 			valorAdmin: double
 			tamaño: int

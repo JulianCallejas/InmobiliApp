@@ -17,7 +17,7 @@ Inmobistorage {
 		especificaciones : {
 			ciudad: string, required
 			direccion: string, required
-			tipo-inmueble: string, required  
+			tipoInmueble: string, required  
 			valorArriendo: double, required
 			valorAdmin: double
 			tamaño: int
@@ -26,7 +26,7 @@ Inmobistorage {
 			baños: int
 			parqueadero: boolean
 		}
-		estadoPublicacion: string				//(Borrador - Publicado) para permitir al usuario agregar caracteristicas en diferentes momentos antes de publicar el inmueble. los required son solo para publicar
+		estadoPublicacion: string, required				//(Borrador - Publicado) para permitir al usuario agregar caracteristicas en diferentes momentos antes de publicar el inmueble. los required son solo para publicar
 		fechaPublicacion: date, required		//Se debe generar al momento de publicar el inmueble
 		arrendatario: email						//Se toma el email de la coleccion usuarios del usuario que toma en arriendo el inmueble
 		fotos: {

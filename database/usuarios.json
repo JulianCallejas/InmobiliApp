@@ -1,0 +1,43 @@
+{
+  [
+    {
+      "email": "usuario1@correo.com",
+      "contrasena": "1234",
+      "nombre": "Angel",
+      "identificacion": "1111111",
+      "telefono": "3282345657"
+    },
+
+    {
+      "email": "usuario2@correo.com",
+      "contrasena": "1234",
+      "nombre": "Andres",
+      "identificacion": "2222222",
+      "telefono": "3282345657"
+    },
+
+    {
+      "email": "usuario3@correo.com",
+      "contrasena": "1234",
+      "nombre": "Daniel",
+      "identificacion": "333333",
+      "telefono": "3282345657"
+    },
+
+    {
+      "email": "usuario4@correo.com",
+      "contrasena": "1234",
+      "nombre": "Miguel",
+      "identificacion": "44444444",
+      "telefono": "3282345657"
+    },
+
+    {
+      "email": "usuario5@correo.com",
+      "contrasena": "1234",
+      "nombre": "Julian",
+      "identificacion": "55555555",
+      "telefono": "3282345657"
+    }
+  ]
+}

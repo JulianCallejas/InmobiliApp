@@ -1,0 +1,346 @@
+{
+
+    "inmueble" : [
+      {
+        "idInmueble": 1,
+        "propietario": "usuario2@correo.com",
+        "titulo": "Inmueble1",
+        "descripcion": "Arriendo Inmueble bonito",
+        "especificaciones": {
+          "ciudad": "Bucaramanga",
+          "direccion": "calle 91#39-4",
+          "tipoInmueble": "Apartamento",
+          "valorArriendo": 1575639,
+          "valorAdmin": 175074,
+          "tamaño": 73,
+          "estrato": 1,
+          "habitaciones": 5,
+          "baños": 2,
+          "parqueadero": false
+        },
+        "estadoPublicacion": "Publicado",
+        "fechaPublicacion": "22-08-2022",
+        "arrendatario": "",
+        "fotos": {
+          "0": "",
+          "1": "",
+          "2": "",
+          "3": "",
+          "4": "",
+          "5": "",
+          "6": "",
+          "7": "",
+          "8": "",
+          "9": "",
+          "10": "",
+          "11": "",
+          "12": "",
+          "13": "",
+          "14": "",
+          "15": ""
+        }
+      },
+      {
+        "idInmueble": 2,
+        "propietario": "usuario4@correo.com",
+        "titulo": "Inmueble2",
+        "descripcion": "Arriend2o Inmueble bonito",
+        "especificaciones": {
+          "ciudad": "Bucaramanga",
+          "direccion": "calle 91#39-4",
+          "tipoInmueble": "Apartamento",
+          "valorArriendo": 1575639,
+          "valorAdmin": 175074,
+          "tamaño": 73,
+          "estrato": 1,
+          "habitaciones": 5,
+          "baños": 2,
+          "parqueadero": false
+        },
+        "estadoPublicacion": "Publicado",
+        "fechaPublicacion": "22-08-2022",
+        "arrendatario": "",
+        "fotos": {
+          "0": "",
+          "1": "",
+          "2": "",
+          "3": "",
+          "4": "",
+          "5": "",
+          "6": "",
+          "7": "",
+          "8": "",
+          "9": "",
+          "10": "",
+          "11": "",
+          "12": "",
+          "13": "",
+          "14": "",
+          "15": ""
+        }
+      },
+      {
+        "idInmueble": 3,
+        "propietario": "usuario5@correo.com",
+        "titulo": "Inmueble3",
+        "descripcion": "Arriendo Inmueble bonito",
+        "especificaciones": {
+          "ciudad": "Bucaramanga",
+          "direccion": "calle 95#39-4",
+          "tipoInmueble": "Habitacion",
+          "valorArriendo": 1575639,
+          "valorAdmin": 175074,
+          "tamaño": 73,
+          "estrato": 1,
+          "habitaciones": 5,
+          "baños": 2,
+          "parqueadero": false
+        },
+        "estadoPublicacion": "Publicado",
+        "fechaPublicacion": "22-08-2022",
+        "arrendatario": "",
+        "fotos": {
+          "0": "",
+          "1": "",
+          "2": "",
+          "3": "",
+          "4": "",
+          "5": "",
+          "6": "",
+          "7": "",
+          "8": "",
+          "9": "",
+          "10": "",
+          "11": "",
+          "12": "",
+          "13": "",
+          "14": "",
+          "15": ""
+        }
+      },
+      {
+        "idInmueble": 4,
+        "propietario": "usuario6@correo.com",
+        "titulo": "Inmueble34",
+        "descripcion": "Arriendo Inmueble bonito",
+        "especificaciones": {
+          "ciudad": "Bucaramanga",
+          "direccion": "calle 95#39-4",
+          "tipoInmueble": "Habitacion",
+          "valorArriendo": 1575639,
+          "valorAdmin": 175074,
+          "tamaño": 73,
+          "estrato": 1,
+          "habitaciones": 5,
+          "baños": 2,
+          "parqueadero": false
+        },
+        "estadoPublicacion": "Publicado",
+        "fechaPublicacion": "22-08-2022",
+        "arrendatario": "",
+        "fotos": {
+          "0": "",
+          "1": "",
+          "2": "",
+          "3": "",
+          "4": "",
+          "5": "",
+          "6": "",
+          "7": "",
+          "8": "",
+          "9": "",
+          "10": "",
+          "11": "",
+          "12": "",
+          "13": "",
+          "14": "",
+          "15": ""
+        }
+      }
+    ],
+    
+    "Contrato" :[
+        {
+          "idContrato": 1,
+          "idInmueble": 3,
+          "fechaContrato": "01-11-2022",
+          "fechaPublicacion": "28-10-2022",
+          "propietario": "usuario1@correo.com",
+          "arrendatario": "usuario3@correo.com",
+          "duracion": 6,
+          "valorArriendo": 1569404,
+          "valorAdmin": 178529,
+          "activo": true,
+          "fechaTerminacion": ""
+        },
+    
+        {
+          "idContrato": 2,
+          "idInmueble": 4,
+          "fechaContrato": "01-11-2022",
+          "fechaPublicacion": "17-09-2022",
+          "propietario": "usuario1@correo.com",
+          "arrendatario": "usuario5@correo.com",
+          "duracion": 6,
+          "valorArriendo": 1953332,
+          "valorAdmin": 84435,
+          "activo": true,
+          "fechaTerminacion": ""
+        },
+    
+        {
+          "idContrato": 3,
+          "idInmueble": 7,
+          "fechaContrato": "01-11-2022",
+          "fechaPublicacion": "22-08-2022",
+          "propietario": "usuario3@correo.com",
+          "arrendatario": "usuario4@correo.com",
+          "duracion": 6,
+          "valorArriendo": 1995464,
+          "valorAdmin": 174081,
+          "activo": true,
+          "fechaTerminacion": ""
+        },
+    
+        {
+          "idContrato": 4,
+          "idInmueble": 12,
+          "fechaContrato": "01-11-2022",
+          "fechaPublicacion": "10-10-2022",
+          "propietario": "usuario2@correo.com",
+          "arrendatario": "usuario2@correo.com",
+          "duracion": 6,
+          "valorArriendo": 924481,
+          "valorAdmin": 120566,
+          "activo": true,
+          "fechaTerminacion": ""
+        },
+    
+        {
+          "idContrato": 5,
+          "idInmueble": 13,
+          "fechaContrato": "01-11-2022",
+          "fechaPublicacion": "10-10-2022",
+          "propietario": "usuario1@correo.com",
+          "arrendatario": "usuario2@correo.com",
+          "duracion": 6,
+          "valorArriendo": 1547979,
+          "valorAdmin": 90878,
+          "activo": true,
+          "fechaTerminacion": ""
+        },
+    
+        {
+          "idContrato": 6,
+          "idInmueble": 14,
+          "fechaContrato": "01-11-2022",
+          "fechaPublicacion": "01-10-2022",
+          "propietario": "usuario2@correo.com",
+          "arrendatario": "usuario5@correo.com",
+          "duracion": 6,
+          "valorArriendo": 1178164,
+          "valorAdmin": 84289,
+          "activo": true,
+          "fechaTerminacion": ""
+        },
+    
+        {
+          "idContrato": 7,
+          "idInmueble": 15,
+          "fechaContrato": "01-11-2022",
+          "fechaPublicacion": "17-09-2022",
+          "propietario": "usuario5@correo.com",
+          "arrendatario": "usuario3@correo.com",
+          "duracion": 6,
+          "valorArriendo": 1513649,
+          "valorAdmin": 101444,
+          "activo": true,
+          "fechaTerminacion": ""
+        },
+    
+        {
+          "idContrato": 8,
+          "idInmueble": 16,
+          "fechaContrato": "01-11-2022",
+          "fechaPublicacion": "28-10-2022",
+          "propietario": "usuario5@correo.com",
+          "arrendatario": "usuario2@correo.com",
+          "duracion": 6,
+          "valorArriendo": 1496844,
+          "valorAdmin": 86793,
+          "activo": true,
+          "fechaTerminacion": ""
+        },
+    
+        {
+          "idContrato": 9,
+          "idInmueble": 17,
+          "fechaContrato": "01-11-2022",
+          "fechaPublicacion": "22-08-2022",
+          "propietario": "usuario5@correo.com",
+          "arrendatario": "usuario2@correo.com",
+          "duracion": 6,
+          "valorArriendo": 1235915,
+          "valorAdmin": 104620,
+          "activo": true,
+          "fechaTerminacion": ""
+        },
+    
+        {
+          "idContrato": 10,
+          "idInmueble": 18,
+          "fechaContrato": "01-11-2022",
+          "fechaPublicacion": "28-10-2022",
+          "propietario": "usuario2@correo.com",
+          "arrendatario": "usuario2@correo.com",
+          "duracion": 6,
+          "valorArriendo": 1743848,
+          "valorAdmin": 145616,
+          "activo": true,
+          "fechaTerminacion": ""
+        }
+      ],
+
+      "Usuarios" : [
+        {
+          "email": "usuario1@correo.com",
+          "contrasena": "1234",
+          "nombre": "Angel",
+          "identificacion": "1111111",
+          "telefono": "3282345657"
+        },
+    
+        {
+          "email": "usuario2@correo.com",
+          "contrasena": "1234",
+          "nombre": "Andres",
+          "identificacion": "2222222",
+          "telefono": "3282345657"
+        },
+    
+        {
+          "email": "usuario3@correo.com",
+          "contrasena": "1234",
+          "nombre": "Daniel",
+          "identificacion": "333333",
+          "telefono": "3282345657"
+        },
+    
+        {
+          "email": "usuario4@correo.com",
+          "contrasena": "1234",
+          "nombre": "Miguel",
+          "identificacion": "44444444",
+          "telefono": "3282345657"
+        },
+    
+        {
+          "email": "usuario5@correo.com",
+          "contrasena": "1234",
+          "nombre": "Julian",
+          "identificacion": "55555555",
+          "telefono": "3282345657"
+        }
+      ]
+  
+  } 

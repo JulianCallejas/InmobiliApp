@@ -5,13 +5,26 @@ import Menu from './compon/menu';
 import Aside from './compon/aside';
 import reportWebVitals from './reportWebVitals';
 import Search from './compon/Search'
+import Display from './compon/display';
+
+
+
+
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Menu />
     <Search />
-    <Aside />
+    <div className='contect-flex-index'>
+      <div className='display'>
+        <Display />
+      </div>
+      <Aside />
+    </div>
+
   </React.StrictMode>
 );
 

@@ -5,7 +5,6 @@ import Arrow_icon from "../img/svg/arrowdown2.svg"
 
 
 function Categorias(){
-    console.log('Hola')
     return (
         <div className="dropdown-content">
             <div className="cag_content"></div>
@@ -16,6 +15,7 @@ function Categorias(){
 }
 
 function aside() {
+   
     return(
        <div className="content">
             <aside>

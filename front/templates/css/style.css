@@ -1,0 +1,96 @@
+body {
+
+    overflow: hidden;
+  background: #ffffff;
+}
+
+.div-login-blue{
+  position: relative;
+
+  width: 492px;
+  height: 456px;
+  float: left;
+  left: -20px;
+  top: -75px;
+
+  background: #5f9df7;
+  border-radius: 94px;
+}
+
+.div-login-blackblue{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    width: 492px;
+    height: 456px;
+    float:right;
+    left: 20px;
+    top: 347px;
+    
+  
+    background: #1746A2;
+    border-radius: 94px;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 492px;
+    height: 456px;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  button {
+
+    margin: 30px;
+    width: 165px;
+    height: 75px;
+    left: 267px;
+    top: 416px;
+    
+    background: #FF731D;
+    border-radius: 30px;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+  }
+  
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+  }
+  
+  img.avatar {
+    width: 40%;
+    border-radius: 50%;
+  }
+  
+  .container {
+
+    align-self: center;
+    padding: 16px;
+  }
+  
+  span.psw {
+    float: right;
+    padding-top: 16px;
+  }

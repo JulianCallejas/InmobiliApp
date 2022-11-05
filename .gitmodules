@@ -1,3 +1,4 @@
 [submodule "back/api"]
 	path = back/api
 	url = https://github.com/mignarvaez/inmobili-app-api.git
+	branch = develop

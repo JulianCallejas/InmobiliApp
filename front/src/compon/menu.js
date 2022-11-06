@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import user_icon from "../img/svg/Vector.svg";
 import "../css/menu.css";
 
@@ -9,7 +11,7 @@ function menu() {
         <div className="NavContec">
           <div className="navReact">
             <div className="item" id="Inicio">
-              Inicio
+              <Link to="/">Inicio</Link>
             </div>
             <div className="item" id="QS">
               ¿Quienes somos?

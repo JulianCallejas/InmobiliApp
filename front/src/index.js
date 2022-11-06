@@ -1,30 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import Menu from './compon/menu';
-import Aside from './compon/aside';
-import reportWebVitals from './reportWebVitals';
-import Search from './compon/Search'
-import Display from './compon/display';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { render } from "react-dom";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import App from "./Routes/app";
+import InmuNew from "./Routes/inmueble-new";
+import Inmu1 from "./Routes/inmueble";
 
 
 
-
-
-
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Menu />
-    <Search />
-    <div className='contect-flex-index'>
-      <div className='display'>
-        <Display />
-      </div>
-      <Aside />
-    </div>
-
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route index element={<App />} />
+          <Route path="inmueble">
+            <Route path=":inmuebleId" element={<Inmu1 />} />
+            <Route index element={<h1>Hola</h1>} />
+            <Route path="new" element={<InmuNew />} />
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

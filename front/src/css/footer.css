@@ -1,0 +1,33 @@
+
+
+.FooContec{
+  width: 100%;
+  display: contents;
+  margin: 14px;
+}
+.FooReact{
+  position: absolute;
+  width: 98%;
+  height: 70px;
+  padding-left: 8px;
+  background: #FF731D;
+  border-radius: 56px;
+
+  display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+  margin: 8px;
+}
+
+.push {
+  margin-left: auto;
+}
+.user_icon{
+  
+  margin-right: 10px;
+}
+
+.footer-header {
+  width: 100%;
+}

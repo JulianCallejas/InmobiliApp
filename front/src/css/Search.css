@@ -12,7 +12,8 @@
 }
 
 .search-contect{
-    margin-left: 70%;
-    margin-top: 18px;
-    margin-bottom: 18px;
+    display: flex;
+    justify-content: right;
+    margin-bottom: 40px;
+    margin-top: 20px;
 }

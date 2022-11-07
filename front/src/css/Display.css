@@ -1,15 +1,14 @@
 
 
-.display-contect{
-
+.display-contect {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     gap: 15px;
-
     width: auto;
     height: auto;
     justify-content: space-around;
+    
 }
 .hover-img{
     display: none;
@@ -27,7 +26,7 @@
     font-size: 20px;
     line-height: 24px;
     letter-spacing: 0.12em;
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
 
@@ -42,7 +41,7 @@
     left: 57px;
     top: 181px;
     flex-wrap: wrap;
-
+    
     border: 1px solid #5F9DF7;
     filter: drop-shadow(1px 4px 4px #5F9DF7);
     border-radius: 54px;
@@ -61,13 +60,15 @@
 }
 
 .contect:hover .hover-img{
+    
     color: aliceblue;
     position: absolute;
     width: auto;
     height: auto;
-    display: flex;
+    display: block;
     flex-wrap:wrap;
     justify-content: center;
     align-items: center;
+    margin-left:25%;
     z-index: 2;
 }

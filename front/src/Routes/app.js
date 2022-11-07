@@ -5,11 +5,13 @@ import Display from "../compon/display";
 import Footer from "../compon/footer";
 
 function App() {
-  return (
+
+
+    return (
     <div>
       <Menu />
       <Search />
-      <div className="contect-flex-index">
+      <div className="contect-flex-index"> 
         <div className="display">
           <Display />
         </div>

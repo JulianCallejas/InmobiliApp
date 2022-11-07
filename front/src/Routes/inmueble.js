@@ -3,8 +3,12 @@ import Aside from "../compon/aside";
 import Search from "../compon/Search";
 import Inmueble from "../compon/inmu";
 import Footer from "../compon/footer";
+import { useLocation } from 'react-router-dom';
+
 
 function Inmu1() {
+
+
   return (
     <div>
       <Menu />

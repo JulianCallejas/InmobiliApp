@@ -11,6 +11,9 @@ import Inmu1 from "./Routes/inmueble";
 import Login from "./Routes/login";
 
 
+import Prueba from "./Routes/botonpruebas";
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
@@ -24,6 +27,7 @@ root.render(
                         <Route path="new" element={<InmuNew />} />
                     </Route>
                     <Route path="login" element={<Login />} />
+                    <Route path="prueba" element={<Prueba />} />
                 </Route>
             </Routes>
         </BrowserRouter>

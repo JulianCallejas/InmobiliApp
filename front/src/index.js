@@ -9,7 +9,7 @@ import App from "./Routes/app";
 import InmuNew from "./Routes/inmueble-new";
 import Inmu1 from "./Routes/inmueble";
 import Login from "./Routes/login";
-
+import Register from "./Routes/register";
 
 import Prueba from "./Routes/botonpruebas";
 
@@ -27,6 +27,7 @@ root.render(
                         <Route path="new" element={<InmuNew />} />
                     </Route>
                     <Route path="login" element={<Login />} />
+                    <Route path="register" element={<Register />} />
                     <Route path="prueba" element={<Prueba />} />
                 </Route>
             </Routes>

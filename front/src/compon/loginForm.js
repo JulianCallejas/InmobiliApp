@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "../css/style.css";
+import "../css/login.css";
 import LoginAuthentication from "../service/login/postLogin";
 import GetLoggedUser from "../service/login/loggedUser";
 import Logout from "../service/login/logout";
@@ -22,8 +22,8 @@ function LoginForm() {
             contrasena: contrasena
         };
 
-        let loginresponse = await LoginAuthentication(data);
-        console.log(loginresponse);
+        const loginresponse = await LoginAuthentication(data);
+        
         if (loginresponse.status === 200) {
 
             const inmobilitoken = {
@@ -46,17 +46,16 @@ function LoginForm() {
             {logged ? (
                 <LoggedForm email={email} />
             ) : (
-                <form onSubmit={Logrequest} >
+                <form className="form-login" onSubmit={Logrequest} >
                     <div className="container">
                         {fail ? (
-                                <>
-                                    <h3 style={{ color: "#CA6F1E", marginTop:40 }} ><b>Usuario o contraseña erroneos</b></h3>
-                                </>
+                            <label className="log-message-fail"><b>Usuario o contraseña erroneos</b></label>
                         ) : (
-                            <></>)}
-
-                        <label><b>Username</b></label>
+                            <label className="log-message" ><b>.</b></label>
+                        )}
+                        <label htmlFor="uname"><b>Username</b></label>
                         <input
+                            className="input-login"
                             type="text"
                             placeholder="Enter Username"
                             id="uname"
@@ -65,8 +64,9 @@ function LoginForm() {
                             onChange={(e) => e.preventDefault}
                             onBlur={(e) => setEmail(e.target.value)}
                         />
-                        <label ><b>Password</b></label>
+                        <label htmlFor="psw"><b>Password</b></label>
                         <input
+                            className="input-login"
                             type="password"
                             placeholder="Enter Password"
                             id="psw"
@@ -76,7 +76,7 @@ function LoginForm() {
                             onBlur={(e) => setContrasena(e.target.value)}
                         />
                         <button id="loginButton" type="submit">Login</button>
-                        <button id="resgisterButton" type="button">Register</button>
+                        <Link to="/register"><button id="resgisterButton" type="button">Register</button></Link>
                         <label>
                             <input
                                 type="checkbox"
@@ -87,9 +87,9 @@ function LoginForm() {
                             />
                             Remember me
                         </label>
-                            <div style={{ alignText:"center" }} >
-                                <br />
-                                <Link to="/" alignText="center" style={{ color: "black", marginLeft: 200}}>Home</Link>
+                            <div style={{ textAlign: "center" }} >
+                            <br />
+                            <Link to="/" style={{ color: "black"}}>Home</Link>
                         </div>
                     </div>
                 </form>

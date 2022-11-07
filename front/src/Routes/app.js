@@ -8,18 +8,17 @@ function App() {
 
 
     return (
-    <div>
-      <Menu />
-      <Search />
-      <div className="contect-flex-index"> 
-        <div className="display">
-          <Display />
+        <div>
+            <Menu />
+            <Search />
+            <div className="contect-flex-index">
+                <div className="display">
+                    <Display />
+                </div>
+                <Aside />
+            </div>
         </div>
-        <Aside />
-      </div>
-      <Footer />
-    </div>
-  );
+    );
 }
 
 export default App;

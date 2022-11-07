@@ -1,13 +1,12 @@
-import "../css/style.css";
+import "../css/login.css";
 import LoginForm from "../compon/loginForm";
 
 function Login() {
 
     return (
-        <div>
+        <div className="loginScreen">
             <LoginForm />
-            <div className="div-login-blackblue">
-            </div>
+            <div className="div-login-blackblue" />
         </div>
     );
 }

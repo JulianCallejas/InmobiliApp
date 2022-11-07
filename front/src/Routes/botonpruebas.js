@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import "../css/style.css";
+import "../css/login.css";
 import LoginAuthentication from "../service/login/postLogin"
 import GetInmueblesAvailable from "../service/inmuebles/getInmueblesAvailable"
 import { Link } from "react-router-dom";

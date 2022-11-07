@@ -4,9 +4,7 @@ function GetLoggedUser() {
     if (loggedUser) {
         console.log("Sesion iniciada");
     } else {
-        console.log("No ingresado");
-        loggedUser = { logged: false }
-;
+        loggedUser = { logged: false };
     }
     return loggedUser;
 }

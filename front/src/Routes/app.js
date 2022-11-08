@@ -2,10 +2,8 @@ import Menu from "../compon/menu";
 import Aside from "../compon/aside";
 import Search from "../compon/Search";
 import Display from "../compon/display";
-import Footer from "../compon/footer";
 
 function App() {
-
 
     return (
         <div>

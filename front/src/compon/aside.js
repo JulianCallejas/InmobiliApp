@@ -3,9 +3,6 @@ import Arrow_icon from "../img/svg/arrowdown2.svg"
 
 import Categorias from "./categoria";
 
-
-
-
 function aside() {
    
     return(

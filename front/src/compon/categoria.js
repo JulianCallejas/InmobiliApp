@@ -5,7 +5,7 @@ function Categorias(espec) {
     switch (espec) {
         case "Categorias":
             return(
-                <div className="dropdown-content">
+                <div className="dropdown-content"> 
                     <div className="cag_content">Habitaciones</div>
                     <div className="cag_content">Apartamentos</div>
                     <div className="cag_content">Locales</div>
@@ -15,11 +15,10 @@ function Categorias(espec) {
         case "Ciudad":
             return(
                 <div className="dropdown-content">
-
                     <div className="cag_content">
-                    <select name="select">
+                    <select name="select" >
                         <option value="value1">Value 1</option>
-                        <option value="value2" selected>Value 2</option>
+                        <option value="value2">Value 2</option>
                         <option value="value3">Value 3</option>
                     </select>
                     </div>

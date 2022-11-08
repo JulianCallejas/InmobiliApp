@@ -12,7 +12,6 @@ function Display() {
         <div>
             <div className="display-contect">
                 {data.map((data) => {
-                    console.log(data.fotos[0]);
                     return (
                         <div
                             className="contect"

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "../css/login.css";
 import LoginAuthentication from "../service/login/postLogin";
 import GetLoggedUser from "../service/login/loggedUser";
-import Logout from "../service/login/logout";
 import LoggedForm from "./loggedForm"
 
 

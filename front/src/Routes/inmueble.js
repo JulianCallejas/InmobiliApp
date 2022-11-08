@@ -1,27 +1,23 @@
 import Menu from "../compon/menu";
-import Aside from "../compon/aside";
-import Search from "../compon/Search";
 import Inmueble from "../compon/inmu";
 import Footer from "../compon/footer";
-import { useLocation } from 'react-router-dom';
-
-
+import GetLoggedUser from "../service/login/loggedUser"
+ 
 function Inmu1() {
 
+    const credenciales = GetLoggedUser();
 
-  return (
-    <div>
-      <Menu />
-      <Search />
-      <div className="contect-flex-index">
-        <div className="display">
-          <Inmueble />
+    return (
+        <div>
+            <Menu credenciales={credenciales} />
+            <div className="contect-flex-index">
+                <div className="display">
+                    <Inmueble credenciales={credenciales} />
+                </div>
+            </div>
+            <Footer />
         </div>
-        <Aside />
-      </div>
-      <Footer />
-    </div>
-  );
+    );
 }
 
 export default Inmu1;

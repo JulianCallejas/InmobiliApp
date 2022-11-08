@@ -14,7 +14,7 @@ function RegisterForm() {
     const [regExitoso, setRegExitoso] = useState(false);
 
     function confirmarContrasena(confContrasena) {
-        if (contrasena != null && contrasena != "") {
+        if (contrasena !== null && contrasena != "") {
             if (contrasena === confContrasena) {
                 setConfiPassword(true);
             } else {

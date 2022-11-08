@@ -20,19 +20,16 @@
   position: relative;
 }
 .inm-city {
-  position: absolute;
-
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 20px;
-  line-height: 24px;
-  letter-spacing: 0.12em;
-
-  color: #ffffff;
-
-  top: calc(35%);
-  left: calc(4%);
+    position: absolute;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.12em;
+    color: #ffffff;
+    top: calc(35%);
+    left: calc(4%);
 }
 
 .price-inm {

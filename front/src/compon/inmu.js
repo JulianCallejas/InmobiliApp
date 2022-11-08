@@ -1,65 +1,98 @@
-import { Api_get_innmuebles } from "./Api";
 import "../css/inmu.css";
+import { useParams } from 'react-router-dom';
+import GetUnInmuebleAvailable from "../service/inmuebles/getUnInmuebleAvailable"
 
-function Inmueble() {
-  let inmuebleId =
-    window.location.pathname.split("")[window.location.pathname.length - 1];
-  let Data = Api_get_innmuebles();
+function Inmueble(props) {
+    const data = (GetUnInmuebleAvailable(useParams().inmuebleId));
 
-  return (
-    <div className="inmu">
-      <section>
-        {Data.filter((data) => data.idInmueble == inmuebleId).map((data) => {
-          return (
-            <div className="cont-inmu" key={data.idInmueble}>
-              <h1>{data.titulo} </h1>
-              <img
-                src={
-                  "https://img.trovit.com/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1wcm9qZWN0cy1hZG1pbi1pbWFnZXMiLCJrZXkiOiIwMDA2ZTQ2Yy01ZTE2LTRkMzktYWZhZS0xMDEwZDViYjA2MTEvMDAwNmU0NmMtNWUxNi00ZDM5LWFmYWUtMTAxMGQ1YmIwNjExXzQwOGViZDY0LTY2NDktNDRhZi1hMjUxLTVlMWZhZmQ3NGM3Mi5qcGciLCJicmFuZCI6IlRST1ZJVCIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NjUyLCJoZWlnaHQiOjQ4MCwiZml0IjoiY292ZXIifX19"
-                }
-              />
+    function contactarArrentario() {
+        if (props.credenciales.logged) {
+            alert("Datos de contacto: \n" +
+                data.propietario
+            )
+        } else {
+            alert("Primero debe registrarse")
+        }
+    }
 
-              <h3 className="inm-city">{data.especificaciones.ciudad} </h3>
-              <div className="price-inm">
-                <h3>${data.especificaciones.valorArriendo} / mes</h3>
-              </div>
-              <div className="esp-inm">
-                <div>
-                  <h1>Descripción</h1>
-                  <h3>
-                    Habitaciones:
-                    <strong> {data.especificaciones.habitaciones}</strong>
-                  </h3>
-                  <h3>
-                    Baños:<strong> {data.especificaciones.baños}</strong>
-                  </h3>
-                  <h3>
-                    Cocinas:<strong> {data.especificaciones.estrato}</strong>
-                  </h3>
-                  <h3>
-                    Salas:<strong> {data.especificaciones.estrato}</strong>
-                  </h3>
+    function tomarArriendo() {
+        if (props.credenciales.logged) {
+            alert("Datos de contacto: \n" +
+                data.propietario
+            )
+        } else {
+            alert("Primero debe registrarse")
+        }
+    }
+
+    return (
+        <div className="inmu" >
+            {data ? (
+                <div className="cont-inmu" key={data.idInmueble}>
+                    <h1>{data.titulo} </h1>
+                    <img src={data.fotos[0]} alt={data.titulo} /> 
+                    <h3 className="inm-city">{data.especificaciones.ciudad} </h3>
+                    <div className="price-inm">
+                        <h3>${data.especificaciones.valorArriendo} / mes</h3>
+                    </div>
+                    <div className="esp-inm">
+                        <div>
+                            <h1>Descripción</h1>
+                            <h3>
+                                Tipo:
+                                <strong> {data.especificaciones.tipoInmueble}</strong>
+                            </h3>
+                            <h3>
+                                Tamaño:
+                                <strong> {data.especificaciones.tamaño} m2</strong>
+                            </h3>
+                            <h3>
+                                Estrato:
+                                <strong> {data.especificaciones.estrato}</strong>
+                            </h3>
+                            <h3>
+                                Admon:
+                                <strong> ${data.especificaciones.valorAdmin}</strong>
+                            </h3>
+                            <h3>
+                                Habitaciones:
+                                <strong> {data.especificaciones.habitaciones}</strong>
+                            </h3>
+                            <h3>
+                                Baños:<strong> {data.especificaciones.baños}</strong>
+                            </h3>
+                        </div>
+                        <div>
+                            <div>
+                                <h1>
+                                    {data.descripcion}
+                                </h1>
+                                <div style={{ alignContent: "center", textAlign: "center", fontSize: 22 }} >
+                                    <button
+                                        style={{ fontSize: 18, width: 260 }}
+                                        onClick={contactarArrentario}
+                                    >
+                                        Contactar al propietario
+                                    </button>
+
+                                    <button
+                                        style={{ fontSize: 18, width: 260 }}
+                                        onClick={tomarArriendo}
+                                    >
+                                        Tomar en arriendo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            ) : (
                 <div>
-                  <p>
-                    <h1>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a
-                      type specimen book. It has survived not only five
-                      centuries
-                    </h1>
-                    <h3>Dueño: {data.propietario}</h3>
-                  </p>
+                    <h1>Cargando datos</h1>
                 </div>
-              </div>
-            </div>
-          );
-        })}
-      </section>
-    </div>
-  );
+            )}
+        </div>
+    );
 }
 
 export default Inmueble;

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Api_get_innmuebles } from "./Api";
 import GetInmueblesAvailable from "../service/inmuebles/getInmueblesAvailable"
 
 import Footer from "../compon/footer";
@@ -7,7 +6,9 @@ import Footer from "../compon/footer";
 import "../css/Display.css";
 
 function Display() {
+
     const data = GetInmueblesAvailable();
+
     return (
         <div>
             <div className="display-contect">

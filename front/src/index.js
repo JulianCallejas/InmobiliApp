@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { render } from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -22,7 +21,7 @@ root.render(
                 <Route path="/">
                     <Route index element={<App />} />
                     <Route path="inmueble">
-                        <Route path=":inmuebleId" element={<Inmu1 />} />
+                        <Route path=":inmuebleId"  element={<Inmu1 />} /> 
                         <Route index element={<h1>Hola</h1>} />
                         <Route path="new" element={<InmuNew />} />
                     </Route>

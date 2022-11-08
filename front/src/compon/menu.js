@@ -4,13 +4,13 @@ import { useState } from "react";
 import user_icon from "../img/svg/Vector.svg";
 import "../css/menu.css";
 
-import GetLoggedUser from "../service/login/loggedUser"
 import Logout from "../service/login/logout"
 
 
-function Menu() {
-    const credenciales = GetLoggedUser();
-    const [logged, setLogged] = useState(credenciales.logged);
+function Menu(props) {
+
+    const [logged, setLogged] = useState(props.credenciales.logged);
+    const [email, setEmail] = useState(props.credenciales.email);
 
     return (
         <div className="menu">
@@ -26,12 +26,13 @@ function Menu() {
                         <div className="item" id="Contact">
                             Contactanos
                         </div>
-                        <div className="push">{credenciales.email}</div>
+                        <div className="push">{email}</div>
                         <div className="user_icon">
                             {logged ? (
                                 <img src={user_icon} className="user_icon" alt="user" onClick={() => {
                                     setLogged(false);
                                     Logout();
+                                    setEmail("");
                                 }
                                 } />
                             ) : (

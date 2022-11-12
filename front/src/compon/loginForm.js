@@ -22,7 +22,7 @@ function LoginForm() {
         };
 
         const loginresponse = await LoginAuthentication(data);
-        
+
         if (loginresponse.status === 200) {
 
             const inmobilitoken = {
@@ -74,21 +74,22 @@ function LoginForm() {
                             onChange={(e) => setContrasena(e.target.value)}
                             onBlur={(e) => setContrasena(e.target.value)}
                         />
+                        <div>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    value={remember}
+                                    id="remember"
+                                    name="remember"
+                                    onChange={(e) => setRemember(!remember)}
+                                />
+                                Remember me
+                            </label>
+                        </div>
                         <button id="loginButton" type="submit">Login</button>
-                        <Link to="/register"><button id="resgisterButton" type="button">Register</button></Link>
-                        <label>
-                            <input
-                                type="checkbox"
-                                value={remember}
-                                id="remember"
-                                name="remember"
-                                onChange={(e) => setRemember(!remember)}
-                            />
-                            Remember me
-                        </label>
-                            <div style={{ textAlign: "center" }} >
-                            <br />
-                            <Link to="/" style={{ color: "black"}}>Home</Link>
+                            <Link to="/register"><button id="resgisterButton" type="button">Register</button></Link>
+                            <div style={{ textAlign: "center", marginTop: -30 }}>
+                                <Link to="/" ><button id="resgisterButton" type="button">Home</button></Link>
                         </div>
                     </div>
                 </form>

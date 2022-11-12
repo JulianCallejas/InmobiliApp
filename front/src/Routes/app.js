@@ -1,16 +1,25 @@
+import { useState } from "react";
+
 import Menu from "../compon/menu";
 import Aside from "../compon/aside";
 import Search from "../compon/Search";
 import Display from "../compon/display";
 import GetLoggedUser from "../service/login/loggedUser"
+import Logout from "../service/login/logout";
 
 function App() {
 
-    const credenciales = GetLoggedUser();
+    const [credenciales, setCredenciales] = useState(GetLoggedUser());
+
+    function salir() {
+        Logout();
+        setCredenciales(GetLoggedUser());
+    }
+
 
     return (
         <div>
-            <Menu credenciales={credenciales} />
+            <Menu credenciales={credenciales} salir={ salir } />
             <Search />
             <div className="contect-flex-index">
                 <div className="display">

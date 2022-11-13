@@ -12,6 +12,8 @@ import Register from "./Routes/register";
 
 import Prueba from "./Routes/botonpruebas";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

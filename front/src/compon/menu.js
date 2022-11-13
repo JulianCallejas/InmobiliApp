@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
-
+import Logout from "../service/login/logout";
 import user_icon from "../img/svg/Vector.svg";
 import "../css/menu.css";
 
 
 function Menu(props) {
+
+    function salir() {
+        Logout();
+        props.setCredenciales(false);
+    }
 
     const mune_add = (espec) => {
         switch (espec) {
@@ -19,17 +23,17 @@ function Menu(props) {
                         <Link className="menu-link" to="/inmuebles">
                             <div className="cag_content">Mis innmuebles</div>
                         </Link>
-
-                        <div
-                            className="cag_content"
-                            onClick={props.salir}
-                        >
-                            Salir
-                        </div>
+                        <Link className="menu-link">
+                            <div
+                                className="cag_content"
+                                onClick={salir}
+                            >
+                                Salir
+                            </div>
+                        </Link>
                     </div>
                 );
-
-            case "login":
+            default:
                 return (
                     <div className="menu-add">
                         <Link className="menu-link" to="/login">
@@ -44,7 +48,7 @@ function Menu(props) {
     };
 
 
-    console.log(props.credenciales.logged)
+
 
     return (
         <div className="menu">

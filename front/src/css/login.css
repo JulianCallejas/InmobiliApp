@@ -60,7 +60,7 @@
     display: block;
 }
 
-button {
+.button-login {
     margin: 30px;
     width: 165px;
     height: 75px;
@@ -70,9 +70,9 @@ button {
     border-radius: 30px;
 }
 
-    button:hover {
-        opacity: 0.8;
-    }
+.button-login:hover {
+    opacity: 0.8;
+}
 
 .cancelbtn {
     width: auto;
@@ -85,7 +85,7 @@ button {
     margin: 24px 0 12px 0;
 }
 
-img.avatar {
+.img.avatar {
     width: 40%;
     border-radius: 50%;
 }
@@ -95,7 +95,7 @@ img.avatar {
     padding: 16px;
 }
 
-span.psw {
+.span.psw {
     float: right;
     padding-top: 16px;
 }

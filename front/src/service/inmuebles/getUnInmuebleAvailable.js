@@ -17,7 +17,7 @@ function GetUnInmuebleAvailable(idInmueble) {
     }
     useEffect(() => {
         x();
-    },);
+    },[]);
 
     return (
         data

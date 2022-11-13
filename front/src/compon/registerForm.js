@@ -2,6 +2,7 @@ import "../css/register.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import UsuarioRegister from "../service/usuario/usuarioRegister";
+import { MensajeToast } from "../compon/MensajeToast"
 
 function RegisterForm() {
 
@@ -13,13 +14,19 @@ function RegisterForm() {
     const [telefono, setTelefono] = useState("");
     const [regExitoso, setRegExitoso] = useState(false);
 
+    const [toastTipo, setToastTipo] = useState(-1);
+    const [toastMsg, setToastMsg] = useState("");
+    const [mensaje, setMensaje] = useState(false);
+
     function confirmarContrasena(confContrasena) {
         if (contrasena !== null && contrasena != "") {
             if (contrasena === confContrasena) {
                 setConfiPassword(true);
             } else {
                 setConfiPassword(false);
-                alert("Las contraseñas no coinciden")
+                setToastTipo(0);
+                setToastMsg("Las contraseñas no coinciden, confirme la contraseña");
+                setMensaje(true);
             }
         }
     }
@@ -40,11 +47,15 @@ function RegisterForm() {
                 setRegExitoso(true)
             } else {
                 setRegExitoso(false);
-                alert(registerResponse.message)
+                setToastTipo(0);
+                setToastMsg(registerResponse.message);
+                setMensaje(true);
             }
 
         } else {
-            alert("Las contraseñas no coinciden, confirme la contraseña");
+            setToastTipo(0);
+            setToastMsg("Las contraseñas no coinciden, confirme la contraseña");
+            setMensaje(true);
         }
     }
 
@@ -137,7 +148,7 @@ function RegisterForm() {
                     )
             }
             </div>
-           
+            {mensaje === true && <MensajeToast tipo={toastTipo} msg={toastMsg} limpiarMensaje={setMensaje} ></MensajeToast>}
         </div>
     );
 

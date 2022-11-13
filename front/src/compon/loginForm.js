@@ -4,6 +4,7 @@ import "../css/login.css";
 import LoginAuthentication from "../service/login/postLogin";
 import GetLoggedUser from "../service/login/loggedUser";
 import LoggedForm from "./loggedForm"
+import { MensajeToast } from "../compon/MensajeToast"
 
 
 function LoginForm() {
@@ -11,7 +12,10 @@ function LoginForm() {
     const [email, setEmail] = useState("");
     const [contrasena, setContrasena] = useState("");
     const [remember, setRemember] = useState(false);
-    const [fail, setFail] = useState(false);
+    
+    const [toastTipo, setToastTipo] = useState(0);
+    const [toastMsg, setToastMsg] = useState("");
+    const [mensaje, setMensaje] = useState(false);
 
 
     async function Logrequest(e) {
@@ -36,7 +40,9 @@ function LoginForm() {
             setLogged(true);
 
         } else {
-            setFail(true);
+            setToastTipo(0);
+            setToastMsg("Usuario y contraseña incorrectos");
+            setMensaje(true);
         }
     }
 
@@ -47,11 +53,6 @@ function LoginForm() {
             ) : (
                 <form className="form-login" onSubmit={Logrequest} >
                     <div className="container">
-                        {fail ? (
-                            <label className="log-message-fail"><b>Usuario o contraseña erroneos</b></label>
-                        ) : (
-                            <label className="log-message" ><b>.</b></label>
-                        )}
                         <label htmlFor="uname"><b>Username</b></label>
                         <input
                             className="input-login"
@@ -86,14 +87,15 @@ function LoginForm() {
                                 Remember me
                             </label>
                         </div>
-                        <button id="loginButton" type="submit">Login</button>
-                            <Link to="/register"><button id="resgisterButton" type="button">Register</button></Link>
-                            <div style={{ textAlign: "center", marginTop: -30 }}>
-                                <Link to="/" ><button id="resgisterButton" type="button">Home</button></Link>
+                        <button className="button-login" id="loginButton" type="submit">Login</button>
+                        <Link to="/register"><button className="button-login" id="login-resgisterButton" type="button">Register</button></Link>
+                        <div style={{ textAlign: "center", marginTop: -30 }}>
+                            <Link to="/" ><button className="button-login" id="login-home" type="button">Home</button></Link>
                         </div>
                     </div>
                 </form>
             )}
+            {mensaje === true && <MensajeToast tipo={toastTipo} msg={toastMsg} limpiarMensaje={setMensaje} ></MensajeToast>}
         </div>
     );
 }

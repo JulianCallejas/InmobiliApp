@@ -1,35 +1,53 @@
-import { Api_get } from './Api';
+import { Link } from "react-router-dom";
+import GetInmueblesAvailable from "../service/inmuebles/getInmueblesAvailable"
+import Spinner from 'react-bootstrap/Spinner';
+import Footer from "../compon/footer";
+import "../css/Display.css";
 
-import "../css/Display.css"
+function Display() {
 
+    const data = GetInmueblesAvailable();
 
+    return (
+        <div>
+            {data ? (
+                <div className="display-contect">
+                    {data.map((data) => {
+                        return (
+                            <div
+                                className="contect"
+                                style={{
+                                    backgroundImage: 'url("' + data.fotos[0] + '")',
+                                }}
+                                key={data.idInmueble}
+                            >
+                                <h2>{data.especificaciones.ciudad}</h2>
+                                <h3>${data.especificaciones.valorArriendo}</h3>
+                                <div className="hover-img">
+                                    <p>{data.descripcion}</p>
+                                    <div>
+                                        <Link to={{
+                                            pathname: "inmueble/" + data.idInmueble,
+                                            state: data
+                                        }}
+                                            style={{ marginLeft: 75 }}>OK</Link>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
 
-
-function Display() {  
-
-  const data = Api_get()
-  
-  return (
-    <div className="display-contect">
-        {
-          data.map( (data) => {
-            return(
-
-              <div 
-                className='contect' 
-                style={{backgroundImage: `url("https://img.trovit.com/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1wcm9qZWN0cy1hZG1pbi1pbWFnZXMiLCJrZXkiOiIwMDA2ZTQ2Yy01ZTE2LTRkMzktYWZhZS0xMDEwZDViYjA2MTEvMDAwNmU0NmMtNWUxNi00ZDM5LWFmYWUtMTAxMGQ1YmIwNjExXzQwOGViZDY0LTY2NDktNDRhZi1hMjUxLTVlMWZhZmQ3NGM3Mi5qcGciLCJicmFuZCI6IlRST1ZJVCIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NjUyLCJoZWlnaHQiOjQ4MCwiZml0IjoiY292ZXIifX19")`}}
-                >
-                 
-              </div>
-
-            )
-          })
-        }
-
-    </div>
-
-
-  );
+                </div>
+            ) : (
+                <div className="display-contect">
+                    <Spinner animation="border" variant="warning" size="large" style={{ marginLeft: 550, marginTop: 60 }}>
+                        <div>Cargando</div>
+                    </Spinner>
+                </div>
+            )}
+            <Footer />
+        </div>
+    );
 }
 
 export default Display;

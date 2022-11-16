@@ -1,0 +1,101 @@
+.loginScreen {
+    overflow: hidden;
+    
+}
+.div-login-blue {
+    position: fixed;
+    width: 535px;
+    height: 570px;
+    float: left;
+    left: -15px;
+    top: -75px;
+    top: -55px;
+    background: #5f9df7;
+    border-radius: 94px;
+    z-index: 2
+}
+
+.div-login-blackblue {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 492px;
+    height: 456px;
+    float: right;
+    right: -25px;
+    bottom: -50px;
+    background: #1746A2;
+    border-radius: 94px;
+    z-index: 1
+}
+
+.form-login {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 492px;
+    height: 516px;
+    margin-left:15px;
+    margin-top: 25px;
+}
+
+.input-login {
+
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.log-message {
+    color: #5f9df7; 
+    display: block;
+}
+
+.log-message-fail {
+    color: #CA6F1E;
+    display: block;
+}
+
+.button-login {
+    margin: 30px;
+    width: 165px;
+    height: 75px;
+    left: 267px;
+    top: 416px;
+    background: #FF731D;
+    border-radius: 30px;
+}
+
+.button-login:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+.img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    align-self: center;
+    padding: 16px;
+}
+
+.span.psw {
+    float: right;
+    padding-top: 16px;
+}

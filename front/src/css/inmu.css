@@ -1,0 +1,97 @@
+.inmu {
+  width: auto;
+  height: auto;
+}
+.cont-inmu {
+  width: 1026px;
+  height: 397px;
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cont-inmu img {
+  height: 100%;
+  width: 100%;
+  background-color: aqua;
+  border: 1px solid #5f9df7;
+  filter: drop-shadow(1px 4px 4px #5f9df7);
+  border-radius: 54px;
+  position: relative;
+}
+.inm-city {
+    position: absolute;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.12em;
+    color: #ffffff;
+    top: calc(35%);
+    left: calc(4%);
+}
+
+.price-inm {
+  position: absolute;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.12em;
+
+  color: #ffffff;
+
+  top: calc(68%);
+  left: calc(45%);
+}
+
+.esp-inm {
+  position: relative;
+  margin-top: 60px;
+  
+  display: flex;
+  
+  justify-content: space-between;
+}
+.esp-inm h1 , .esp-inm h3 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 40;
+  font-size: 35px;
+  line-height: 45px;
+  letter-spacing: 0.10em;
+}
+
+.esp-inm div p h1 {
+    text-align: justify;
+    margin-left: 90px;
+}
+
+
+.contect-carousel {
+    box-sizing: border-box;
+    width: 474px;
+    height: 408px;
+    left: 57px;
+    top: 181px;
+    flex-wrap: wrap;
+    border: 1px solid #5F9DF7;
+    filter: drop-shadow(1px 4px 4px #5F9DF7);
+    border-radius: 54px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height:100%;
+    resize:both;
+}
+
+.carousel-inner {
+    max-width: 510px;
+}

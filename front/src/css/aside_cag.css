@@ -83,6 +83,9 @@
     left: 1194px;
     top: 385px;
 
+    text-align: center;
+    font-size: 20px;
+
     background: #FF731D;
     border-radius: 56px;
 }

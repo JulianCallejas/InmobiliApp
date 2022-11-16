@@ -7,10 +7,10 @@ import "../css/Display.css";
 function Display() {
 
     const data = GetInmueblesAvailable();
-
+    
     return (
         <div>
-            {data ? (
+            {data[0] ? (
                 <div className="display-contect">
                     {data.map((data) => {
                         return (
@@ -22,7 +22,7 @@ function Display() {
                                 key={data.idInmueble}
                             >
                                 <h2>{data.especificaciones.ciudad}</h2>
-                                <h3>${data.especificaciones.valorArriendo}</h3>
+                                <h3>${data.especificaciones.valorArriendo.toLocaleString()}</h3>
                                 <div className="hover-img">
                                     <p>{data.descripcion}</p>
                                     <div>
@@ -39,7 +39,7 @@ function Display() {
 
                 </div>
             ) : (
-                <div className="display-contect">
+                <div >
                     <Spinner animation="border" variant="warning" size="large" style={{ marginLeft: 550, marginTop: 60 }}>
                         <div>Cargando</div>
                     </Spinner>

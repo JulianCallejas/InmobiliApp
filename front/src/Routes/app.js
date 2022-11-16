@@ -10,16 +10,20 @@ function App() {
 
     const [credenciales, setCredenciales] = useState(GetLoggedUser());
 
-
     return (
         <div>
             <Menu credenciales={credenciales} setCredenciales={setCredenciales} />
-            <Search />
-            <div className="contect-flex-index">
-                <div className="display">
-                    <Display />
+            <div style={{ display: "flex" }}>
+                <h2 style={{ marginLeft: 100 }}>Inmuebles Disponibles</h2>
+                <Search />
+            </div>
+            <div>
+                <div className="contect-flex-index">
+                    <div className="display">
+                        <Display />
+                    </div>
+                    <Aside />
                 </div>
-                <Aside />
             </div>
         </div>
     );

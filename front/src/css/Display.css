@@ -1,7 +1,7 @@
 
 
 .display-contect {
-    position:initial;
+    position: initial;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -9,7 +9,7 @@
     width: auto;
     height: auto;
     justify-content: space-around;
-    
+    z-index: 1;
 }
 .hover-img{
     display: none;
@@ -34,24 +34,25 @@
     background: #FF731D;
     border-radius: 56px;
 }
-.contect{
+.contect {
     box-sizing: border-box;
-
     width: 484px;
     height: 408px;
     left: 57px;
     top: 181px;
     flex-wrap: wrap;
-    
     border: 1px solid #5F9DF7;
     filter: drop-shadow(1px 4px 4px #5F9DF7);
     border-radius: 54px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.contect h2 {
-    color: white;
-    margin: 50px;
-}
+    .contect h2 {
+        color: white;
+        margin: 50px;
+    }
 
 .contect h3 {
     color: white;
@@ -73,3 +74,50 @@
     margin-left:25%;
     z-index: 2;
 }
+
+.contect-misInmuebles {
+    box-sizing: border-box;
+    width: 484px;
+    height: 408px;
+    left: 57px;
+    top: 181px;
+    flex-wrap: wrap;
+    border: 1px solid #5F9DF7;
+    border-radius: 54px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    
+}
+
+
+    .contect-misInmuebles:hover .hover-img {
+        color: aliceblue;
+        position: absolute;
+        width: auto;
+        height: auto;
+        display: block;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-top:2%;
+        margin-left: 9%;
+        z-index: 2;
+    }
+    .contect-misInmuebles h2 {
+        color: white;
+        width: stretch;
+        background: #000000;
+        opacity: 50%;
+        text-align: center;
+        margin-top: -8px;
+    }
+    .contect-misInmuebles h1 {
+        color: white;
+        margin-top: 59%;
+        width: stretch;
+        background: #000000;
+        opacity: 50%;
+        border-radius: 0%;
+        text-align: center;
+    }

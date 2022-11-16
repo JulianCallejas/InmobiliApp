@@ -9,6 +9,7 @@ import InmuNew from "./Routes/inmueble-new";
 import Inmu1 from "./Routes/inmueble";
 import Login from "./Routes/login";
 import Register from "./Routes/register";
+import MisInmuebles from "./Routes/mis-inmuebles";
 
 import Prueba from "./Routes/botonpruebas";
 
@@ -24,8 +25,12 @@ root.render(
                     <Route index element={<App />} />
                     <Route path="inmueble">
                         <Route path=":inmuebleId"  element={<Inmu1 />} /> 
-                        <Route index element={<h1>Hola</h1>} />
+                        <Route index element={<App />} />
                         <Route path="new" element={<InmuNew />} />
+                    </Route>
+                    <Route path="mis-inmuebles">
+                        <Route index element={<MisInmuebles />} />
+                        <Route path="detalle" element={<h1>Detalle Inmueble</h1>} />
                     </Route>
                     <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />

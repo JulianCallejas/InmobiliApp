@@ -1,0 +1,25 @@
+.mi-inmueble-titulo{
+    font-size:30px;
+    font-weight:700;
+    border:0;
+    margin-left:15%;
+}
+
+.mi-inmueble-especificaciones {
+    border: 0;
+}
+
+.mi-inmueble-descripcion {
+    border: 0;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.contrato-acordion {
+    box-shadow: 0 0 1px #FF731D;
+    
+}
+
+contrato-acordion-header {
+    background: #FF731D;
+}

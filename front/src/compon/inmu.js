@@ -24,7 +24,6 @@ function Inmueble(props) {
         setIndex(selectedIndex);
     };
 
-    console.log((1000).toLocaleString())
     function contactarArrentario() {
         if (props.credenciales.logged) {
             setToastTipo(1);
@@ -81,8 +80,8 @@ function Inmueble(props) {
                     </Col>
                     <Col>
                         <Table responsive>
-                            <tbody>
-                                <tr> 
+                            <tbody style={{ borderBottom: "#FF731D" }}>
+                                <tr > 
                                     <td>
                                         <div>
                                         <h4>
@@ -129,7 +128,7 @@ function Inmueble(props) {
                             </tbody>
                         </Table>
                         <Table responsive>
-                            <tbody>
+                            <tbody style={{ borderBottom: "#FF731D" }}>
                                 <tr>
                                     <td>
                                         <h4>
@@ -139,7 +138,8 @@ function Inmueble(props) {
                                     </td>
                                     <td>
                                         <h4>
-                                            Baños:<strong> {props.data.especificaciones.baños}</strong>
+                                            Baños:
+                                            <strong> {props.data.especificaciones.baños}</strong>
                                         </h4>
                                     </td>
                                     <td>

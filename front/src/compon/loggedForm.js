@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "../css/login.css";
 import Logout from "../service/login/logout";
 
+
 function LoggedForm(props) {
 	const email = props.email;
 	return (

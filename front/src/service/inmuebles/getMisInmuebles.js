@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 
 import APIURL from "../apiUrl"
 
-function GetInmueblesAvailable() {
+function GetMisInmuebles(credenciales) {
     const [data, setData] = useState([]);
-    let url = APIURL + 'inmuebles/availables';
+    let url = APIURL + 'usuarios/usuariocompleto/' + credenciales.email; 
     async function x () {
-        await fetch(url, {
+        fetch(url, {
             method: "GET",
+            headers: { "Authorization": "Bearer " + credenciales.access_token }
         }).then((response) => response.json())
             .then((json) => {
                 setData(json);
@@ -17,7 +18,7 @@ function GetInmueblesAvailable() {
     }
     useEffect(() => {
         x();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -26,4 +27,4 @@ function GetInmueblesAvailable() {
 
 }
 
-export default GetInmueblesAvailable;
+export default GetMisInmuebles;

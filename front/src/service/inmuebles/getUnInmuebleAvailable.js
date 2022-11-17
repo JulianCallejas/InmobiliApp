@@ -5,8 +5,8 @@ import APIURL from "../apiUrl"
 function GetUnInmuebleAvailable(idInmueble) {
     const [data, setData] = useState();
     let url = APIURL + 'inmuebles/' + idInmueble;
-    const x = () => {
-        fetch(url, {
+    async function x(){
+        await fetch(url, {
             method: "GET",
         }).then((response) => response.json())
             .then((json) => {
@@ -17,6 +17,7 @@ function GetUnInmuebleAvailable(idInmueble) {
     }
     useEffect(() => {
         x();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     return (

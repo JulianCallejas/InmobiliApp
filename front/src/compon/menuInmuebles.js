@@ -3,7 +3,12 @@ import user_icon from "../img/svg/Vector.svg";
 import "../css/menu.css";
 
 
-function Menu(props) {
+function MenuInmueble(props) {
+
+    function irMisInmuebles() {
+        props.setContenido({ contenido: "misInmuebles", inmueble: -1 });
+    }
+
 
     const mune_add = (espec) => {
         switch (espec) {
@@ -14,7 +19,7 @@ function Menu(props) {
                         <Link className="menu-link" to="/account">
                             <div className="cag_content">Mi cuenta</div>
                         </Link>
-                        <Link className="menu-link" to="/mis-inmuebles">
+                        <Link className="menu-link" to="/mis-inmuebles" onClick={irMisInmuebles}>
                             <div className="cag_content">Mis inmuebles</div>
                         </Link>
                         <Link className="menu-link" to="/login">
@@ -26,6 +31,7 @@ function Menu(props) {
                         </Link>
                     </div>
                 );
+            break;
             default:
                 return (
                     <div className="menu-add">
@@ -37,10 +43,9 @@ function Menu(props) {
                         </Link>
                     </div>
                 );
+            break;
         }
     };
-
-
 
 
     return (
@@ -48,14 +53,23 @@ function Menu(props) {
             <header className="menu-header">
                 <div className="NavContec">
                     <div className="navReact">
-                        <div className="item" id="Inicio">
-                            <Link to="/" style={{ color: "black" }}>Inicio</Link>
+                        <div className="item" id="BuscarInmuebles">
+                            <Link to="/" style={{ color: "black" }}>Buscar Inmuebles</Link>
                         </div>
-                        <div className="item" id="QS">
-                            ¿Quienes somos?
+                        <div className="item" id="AgregarInmueble">
+                            <Link style={{ color: "black" }}>
+                                Agregar Inmueble
+                            </Link>
                         </div>
-                        <div className="item" id="Contact">
-                            Contactanos
+                        <div className="item" id="MisInmuebles">
+                            <Link style={{ color: "black" }} onClick={irMisInmuebles}>
+                                Mis Inmuebles
+                            </Link>
+                        </div>
+                        <div className="item" id="MisArriendos">
+                            <Link style={{ color: "black" }}>
+                                Mis Arriendos
+                            </Link>
                         </div>
                         <div className="push">{props.credenciales.email}</div>
                         <div className="user_icon">
@@ -79,4 +93,4 @@ function Menu(props) {
     );
 }
 
-export default Menu;
+export default MenuInmueble;

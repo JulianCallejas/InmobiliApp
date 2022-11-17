@@ -7,6 +7,7 @@ function MenuInmueble(props) {
 
     function irMisInmuebles() {
         props.setContenido({ contenido: "misInmuebles", inmueble: -1 });
+        props.recargarMisInmuebles(); 
     }
 
 

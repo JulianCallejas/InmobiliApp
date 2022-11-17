@@ -9,8 +9,6 @@ function MisInmueblesList(props) {
 
     }
 
-    console.log(props);
-
     return (
         <div>
             <div className="justify-content-center" style={{ display: "flex" }}>

@@ -8,12 +8,18 @@ import { MensajeToast } from "../compon/MensajeToast"
 function MisInmuebles() {
 
     const [credenciales, setCredenciales] = useState(GetLoggedUser());
-    const data = credenciales ? GetMisInmuebles(credenciales) : false;
-    
+    const [actualizaDatos, setActualizaDatos] =  useState(0);
+    var data = credenciales ? GetMisInmuebles(credenciales) : false;
+
     var mensaje;
     var toastTipo;
     var toastMsg;
     var credencial = credenciales;
+
+    function recargarMisInmuebles() {
+        setActualizaDatos(actualizaDatos + 1);
+        data = GetMisInmuebles(credenciales);
+    }
 
     if (data.statusCode === 401) {
         mensaje = true;
@@ -27,7 +33,7 @@ function MisInmuebles() {
             {data ? (
                 <div>
                     <div>
-                        <MisInmueblesContent misInmuebles={data.misInmuebles} misArriendos={data.misArriendos} credenciales={credencial} />
+                        <MisInmueblesContent misInmuebles={data.misInmuebles} misArriendos={data.misArriendos} credenciales={credencial} recargarMisInmuebles={recargarMisInmuebles}/>
                     </div>
                     {mensaje === true && (<div>
                         <MensajeToast tipo={toastTipo} msg={toastMsg} limpiarMensaje={() => { mensaje = false }} ></MensajeToast>

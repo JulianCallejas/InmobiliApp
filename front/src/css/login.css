@@ -74,6 +74,22 @@
     opacity: 0.8;
 }
 
+.button-login-s {
+    margin: 5px;
+    width: 165px;
+    height: 35px;
+    left: 267px;
+    top: 416px;
+    background: #FF731D;
+    border-radius: 30px;
+}
+
+    .button-login-s:hover {
+        opacity: 0.8;
+    }
+
+
+
 .cancelbtn {
     width: auto;
     padding: 10px 18px;

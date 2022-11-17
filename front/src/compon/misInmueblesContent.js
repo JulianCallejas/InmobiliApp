@@ -9,15 +9,20 @@ import MisInmueblesDetalleArriendo from "../compon/misInmueblesDetalleArriendo";
 import "../css/Display.css";
 
 function MisInmueblesContent(props) {
-    const [contenido, setContenido] = useState({ contenido:"misInmuebles",inmueble:-1});
+    const [contenido, setContenido] = useState({ contenido: "misInmuebles", inmueble: -1 });
+
+    function actualizarContenido() {
+
+    }
+
     return (
         <div>
             <MenuInmueble credenciales={props.credenciales} setContenido={setContenido } />
             {props.misInmuebles ? (
                 <div>
-                    {(contenido.contenido === "misInmuebles") && <MisInmueblesList misInmuebles={props.misInmuebles} setContenido={setContenido}></MisInmueblesList>}
-                    {(contenido.contenido === "detalle") && <MisInmueblesDetalle setContenido={setContenido} data={props.misInmuebles[contenido.inmueble]} />}
-                    {(contenido.contenido === "detalleArriendo") && <MisInmueblesDetalleArriendo setContenido={setContenido} data={props.misInmuebles[contenido.inmueble]} />}
+                    {(contenido.contenido === "misInmuebles") && <MisInmueblesList misInmuebles={props.misInmuebles} setContenido={setContenido} recargarMisInmuebles={props.recargarMisInmuebles}></MisInmueblesList>}
+                    {(contenido.contenido === "detalle") && <MisInmueblesDetalle setContenido={setContenido} data={props.misInmuebles[contenido.inmueble]} credenciales={props.credenciales} recargarMisInmuebles={props.recargarMisInmuebles}  />}
+                    {(contenido.contenido === "detalleArriendo") && <MisInmueblesDetalleArriendo setContenido={setContenido} data={props.misInmuebles[contenido.inmueble]} recargarMisInmuebles={props.recargarMisInmuebles }/>}
                     
                     <Footer />
                 </div>

@@ -2,7 +2,9 @@ import "../css/miInmueble.css";
 import { MensajeToast } from "../compon/MensajeToast"
 import { ModalFotosEditar } from "../compon/ModalFotosEditar"
 import { MisInmueblesContratosList } from "../compon/misInmueblesContratosList"
+import patchMiInmueble from "../service/inmuebles/patchMiInmueble"
 import React, { useState } from 'react'
+import { Link } from "react-router-dom";
 import Carousel from 'react-bootstrap/Carousel';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -10,13 +12,13 @@ import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
 import chulo from "../img/svg/chulo.png"
 import equis from "../img/svg/equis.png"
-import { Link } from "react-router-dom";
+
 
 
 
 function MisInmueblesDetalle(props) {
 
-    console.log(props.data)
+    //console.log(props.data)
 
     //variables del formulario:
     const [titulo, setTtitulo] = useState(props.data.titulo);
@@ -74,16 +76,66 @@ function MisInmueblesDetalle(props) {
         }
     }
 
-    function irMisInmuebles() {
-        props.setContenido({ contenido: "misInmuebles", inmueble: -1 });
+    function actualizaFotos(fotos) {
+        setFotos(fotos);
     }
 
 
+    function cerrarModal() {
+        setModalShow(false);
+    }
+
+    function irMisInmuebles(event) {
+        props.recargarMisInmuebles();
+        props.setContenido({ contenido: "misInmuebles", inmueble: -1 });
+        event.preventDefault();
+    }
+
+    async function guardarInmueble(event) {
+        event.preventDefault();
+        var inmuebleEditado = {
+            especificaciones: {},
+            _id: {},
+
+        };
+        inmuebleEditado.propietario = props.credenciales.email;
+        inmuebleEditado.titulo = titulo;
+        inmuebleEditado.descripcion = descripcion;
+        inmuebleEditado.especificaciones.ciudad = ciudad;
+        inmuebleEditado.especificaciones.direccion = direccion;
+        inmuebleEditado.especificaciones.tipoInmueble = tipoInmueble;
+        inmuebleEditado.especificaciones.valorArriendo = valorArriendo1;
+        inmuebleEditado.especificaciones.valorAdmin = valorAdmin1;
+        inmuebleEditado.especificaciones.tamaño = tamano;
+        inmuebleEditado.especificaciones.estrato = estrato;
+        inmuebleEditado.especificaciones.habitaciones = habitaciones;
+        inmuebleEditado.especificaciones.baños = banos;
+        inmuebleEditado.especificaciones.parqueadero = parqueadero;
+        inmuebleEditado.estadoPublicacion = props.data.estadoPublicacion;
+        inmuebleEditado.fechaPublicacion = props.data.fechaPublicacion;
+        inmuebleEditado.arrendatario = "";
+        inmuebleEditado.fotos = fotos;
+        inmuebleEditado.idInmueble = props.data.idInmueble;
+
+        const guardado = await patchMiInmueble(inmuebleEditado, props.credenciales);
+
+        if (guardado.propietario) {
+            setToastTipo(1);
+            setToastMsg("Datos guardados correctamente");
+            setMensaje(true);
+            
+        } else {
+            setToastTipo(0);
+            setToastMsg("No se guardaron los cambios:  " + guardado.message);
+            setMensaje(true);
+        }
+
+
+    }
 
 
     function contactarArrentario(event) {
         event.preventDefault();
-        console.log("boton")
         if (parqueadero) {
             setToastTipo(1);
             setToastMsg("Datos de contacto: \n" +
@@ -331,7 +383,7 @@ function MisInmueblesDetalle(props) {
                             <div style={{ alignContent: "center", textAlign: "center", fontSize: 22 }} >
                                 <button className="button-login"
                                     style={{ fontSize: 18, width: 260 }}
-                                    onClick={contactarArrentario}
+                                    onClick={(event) => { guardarInmueble(event) }}
                                 >
                                     Guardar
                                 </button>
@@ -359,7 +411,8 @@ function MisInmueblesDetalle(props) {
                 show={modalShow}
                 fotoindex={index}
                 fotos={fotos}
-                
+                actualizaFotos={actualizaFotos}
+                cerrarModal={cerrarModal}
                 onHide={() => setModalShow(false)}
             />
         </div >

@@ -24,8 +24,14 @@ export const ModalFotosEditar = (props) => {
         props.cerrarModal();
     }
 
+    function agregarOtraFoto() {
+        if (!fotosArray[15]) {
+            fotosArray.push("https://cdn-icons-png.flaticon.com/512/15/15735.png");
+            setIndex(index + 1);
+        }
+    }
 
-
+    
     return (
         <>
             <Modal
@@ -75,6 +81,7 @@ export const ModalFotosEditar = (props) => {
                     </div>
                 </Modal.Body>
                 <Modal.Footer >
+                    {!fotosArray[15] && <button className="button-login-s" type="button" onClick={agregarOtraFoto}>+Otra foto</button>}
                     <button className="button-login-s" type="button" onClick={aceptarCambios}>Aceptar</button>
                     <button className="button-login-s" type="button" onClick={props.cerrarModal}>Cancelar</button>
                 </Modal.Footer>

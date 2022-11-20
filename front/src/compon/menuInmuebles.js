@@ -10,7 +10,6 @@ function MenuInmueble(props) {
         props.recargarMisInmuebles(); 
     }
 
-
     const mune_add = (espec) => {
         switch (espec) {
             case "props.credenciales.logged":
@@ -58,7 +57,7 @@ function MenuInmueble(props) {
                             <Link to="/" style={{ color: "black" }}>Buscar Inmuebles</Link>
                         </div>
                         <div className="item" id="AgregarInmueble">
-                            <Link style={{ color: "black" }}>
+                            <Link style={{ color: "black" }} onClick={() => { props.setContenido({ contenido: "agregar", inmueble: -1 }) } }>
                                 Agregar Inmueble
                             </Link>
                         </div>

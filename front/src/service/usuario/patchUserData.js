@@ -1,21 +1,17 @@
-import { useEffect, useState } from "react";
-
 import APIURL from "../apiUrl"
 
-function putMiInmueble(inmueble, credenciales) {
-    
-    let url = APIURL + 'inmuebles';
-
+function PatchUserData(data, credenciales) {
+    let url = APIURL + 'usuarios/' + credenciales.email;
     return fetch(url, {
-        method: "POST",
+        method: "PATCH",
         headers: {
             "Content-Type": "application/json",
             "Authorization": "Bearer " + credenciales.access_token
         },
-        body: JSON.stringify(inmueble)
+        body: JSON.stringify(data)
     }).then(res => { return res.json() }).catch((error) => {
         console.error('Error:', error);
     });
 }
 
-export default putMiInmueble;
+export default PatchUserData;

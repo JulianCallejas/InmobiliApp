@@ -6,7 +6,8 @@ import MisInmueblesList from "../compon/misInmueblesList";
 import MisInmueblesDetalle from "../compon/misInmueblesDetalle";
 import MisInmueblesDetalleArriendo from "../compon/misInmueblesDetalleArriendo";
 import MisInmueblesDetalleAgregar from "../compon/misInmueblesDetalleAgregar";
-
+import MisArriendosList from "../compon/misArriendosList";
+import MisIArriendosDetalle from "../compon/misIArriendosDetalle";
 
 import "../css/Display.css";
 
@@ -24,7 +25,6 @@ function MisInmueblesContent(props) {
         setContenidoActualiza(false);
     }
 
-
     return (
         <div>
             <MenuInmueble credenciales={props.credenciales} setContenido={setContenido } />
@@ -34,7 +34,8 @@ function MisInmueblesContent(props) {
                     {(contenido.contenido === "detalle") && <MisInmueblesDetalle setContenido={setContenido} data={props.misInmuebles[contenido.inmueble]} credenciales={props.credenciales} recargarMisInmuebles={props.recargarMisInmuebles}  />}
                     {(contenido.contenido === "detalleArriendo") && <MisInmueblesDetalleArriendo setContenido={setContenido} data={props.misInmuebles[contenido.inmueble]} recargarMisInmuebles={props.recargarMisInmuebles} />}
                     {(contenido.contenido === "agregar") && <MisInmueblesDetalleAgregar setContenido={setContenido} credenciales={props.credenciales} recargarMisInmuebles={props.recargarMisInmuebles} actualizarContenido={actualizarContenido} />}
-                    
+                    {(contenido.contenido === "misArriendos") && <MisArriendosList misArriendos={props.misArriendos} setContenido={setContenido} recargarMisInmuebles={props.recargarMisInmuebles}></MisArriendosList>}
+                    {(contenido.contenido === "misArriendosDetalle") && <MisIArriendosDetalle setContenido={setContenido} data={props.misArriendos[contenido.inmueble]} recargarMisInmuebles={props.recargarMisInmuebles} />}
                     <Footer />
                 </div>
             ) : (

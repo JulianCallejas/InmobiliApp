@@ -74,6 +74,21 @@
     opacity: 0.8;
 }
 
+.button-eliminar {
+    margin: 30px;
+    width: 165px;
+    height: 75px;
+    left: 267px;
+    top: 416px;
+    background: #f44336;
+    border-radius: 30px;
+}
+
+    .button-eliminar:hover {
+        opacity: 0.8;
+    }
+
+
 .button-login-s {
     margin: 5px;
     width: 125px;

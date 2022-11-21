@@ -67,7 +67,7 @@ function MenuInmueble(props) {
                             </Link>
                         </div>
                         <div className="item" id="MisArriendos">
-                            <Link style={{ color: "black" }}>
+                            <Link style={{ color: "black" }} onClick={() => { props.setContenido({ contenido: "misArriendos", inmueble: -1 })}}>
                                 Mis Arriendos
                             </Link>
                         </div>

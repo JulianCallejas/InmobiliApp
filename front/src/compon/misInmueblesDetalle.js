@@ -1,8 +1,10 @@
 import "../css/miInmueble.css";
 import { MensajeToast } from "../compon/MensajeToast"
 import { ModalFotosEditar } from "../compon/ModalFotosEditar"
+import { ModalConfirma } from "../compon/ModalConfirma"
 import { MisInmueblesContratosList } from "../compon/misInmueblesContratosList"
 import patchMiInmueble from "../service/inmuebles/patchMiInmueble"
+import deleteMiInmueble from "../service/inmuebles/deleteMiInmueble"
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import Carousel from 'react-bootstrap/Carousel';
@@ -45,7 +47,10 @@ function MisInmueblesDetalle(props) {
 
     //estado del modal:
     const [modalShow, setModalShow] = useState(false);
-
+    const [modalConfirmaShow, setModalConfirmaShow] = useState(false);
+    const [tituloConfirma, setTituloConfirma] = useState("");
+    const [mensajeConfirma, setMensajeConfirma] = useState("");
+    
     //estado del carrusel:
     const [index, setIndex] = useState(0);
     const handleSelect = (selectedIndex, e) => {
@@ -80,9 +85,12 @@ function MisInmueblesDetalle(props) {
         setFotos(fotos);
     }
 
-
     function cerrarModal() {
         setModalShow(false);
+    }
+
+    function cerrarModalConfirmar() {
+        setModalConfirmaShow(false);
     }
 
     function irMisInmuebles(event) {
@@ -130,6 +138,25 @@ function MisInmueblesDetalle(props) {
             setMensaje(true);
         }
     }
+
+    async function borrarInmueble(event) {
+        event.preventDefault();
+        cerrarModalConfirmar();
+        const eliminado = await deleteMiInmueble(props.data.idInmueble, props.credenciales);
+
+        if (eliminado.propietario) {
+            setToastTipo(1);
+            setToastMsg("Inmueble eliminado correctamente");
+            setMensaje(true);
+            setTimeout(window.location.reload(), 4000);
+
+        } else {
+            setToastTipo(0);
+            setToastMsg("No se ha creado el inmueble:  " + eliminado.message);
+            setMensaje(true);
+        }
+    }
+
 
     return (
         <div>
@@ -360,6 +387,19 @@ function MisInmueblesDetalle(props) {
                                     Guardar
                                 </button>
 
+                                <button className="button-eliminar"
+                                    type="button"
+                                    style={{ fontSize: 18, width: 260 }}
+                                    onClick={() => {
+                                        setToastTipo(0);
+                                        setModalConfirmaShow(true);
+                                        setTituloConfirma("¿Eliminar Inmueble?");
+                                        setMensajeConfirma("Una vez borrado el inmueble no prodrá recuperar la información")
+                                    }}
+                                >
+                                    Eliminar
+                                </button>
+
                                 <button className="button-login"
                                     type="button"
                                     style={{ fontSize: 18, width: 260 }}
@@ -384,9 +424,18 @@ function MisInmueblesDetalle(props) {
                 show={modalShow}
                 fotoindex={index}
                 fotos={fotos}
-                actualizaFotos={actualizaFotos}
-                cerrarModal={cerrarModal}
                 onHide={() => setModalShow(false)}
+                onSubmit={(event) => {
+                    event.preventDefault(); actualizaFotos(event.target[1]._wrapperState.initialValue) }}
+            />
+
+            <ModalConfirma
+                show={modalConfirmaShow}
+                tipo={toastTipo}
+                titulo={tituloConfirma}
+                mensaje={mensajeConfirma}
+                onSubmit={borrarInmueble}
+                onHide={() => cerrarModalConfirmar(false)}
             />
         </div >
     );

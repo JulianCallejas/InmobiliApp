@@ -1,8 +1,7 @@
 import "../css/miInmueble.css";
 import { MensajeToast } from "../compon/MensajeToast"
 import { ModalFotosEditar } from "../compon/ModalFotosEditar"
-import { MisInmueblesContratosList } from "../compon/misInmueblesContratosList"
-import puthMiInmueble from "../service/inmuebles/putMiInmueble"
+import putMiInmueble from "../service/inmuebles/putMiInmueble"
 import fechaActualString from "../service/inmuebles/fechaActualString"
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
@@ -13,7 +12,6 @@ import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
 import chulo from "../img/svg/chulo.png"
 import equis from "../img/svg/equis.png"
-
 
 
 
@@ -29,20 +27,20 @@ function MisInmueblesDetalleAgregar(props) {
     //console.log(props.data)
 
     //variables del formulario:
-    const [titulo, setTtitulo] = useState();
-    const [ciudad, setCiudad] = useState();
-    const [tipoInmueble, setTipoInmueble] = useState();
-    const [valorArriendo, setValorArriendo] = useState();
-    const [valorArriendo1, setValorArriendo1] = useState();
-    const [valorAdmin, setValorAdmin] = useState();
-    const [valorAdmin1, setValorAdmin1] = useState();
-    const [tamano, setTamano] = useState();
-    const [estrato, setEstrato] = useState();
-    const [habitaciones, setHabitaciones] = useState();
-    const [banos, setBanos] = useState();
-    const [parqueadero, setParqueadero] = useState();
-    const [direccion, setDireccion] = useState();
-    const [descripcion, setDescripcion] = useState();
+    const [titulo, setTtitulo] = useState("");
+    const [ciudad, setCiudad] = useState("");
+    const [tipoInmueble, setTipoInmueble] = useState("");
+    const [valorArriendo, setValorArriendo] = useState("");
+    const [valorArriendo1, setValorArriendo1] = useState("");
+    const [valorAdmin, setValorAdmin] = useState("");
+    const [valorAdmin1, setValorAdmin1] = useState("");
+    const [tamano, setTamano] = useState("");
+    const [estrato, setEstrato] = useState("");
+    const [habitaciones, setHabitaciones] = useState("");
+    const [banos, setBanos] = useState("");
+    const [parqueadero, setParqueadero] = useState(false);
+    const [direccion, setDireccion] = useState("");
+    const [descripcion, setDescripcion] = useState("");
     const [fotos, setFotos] = useState([]);
 
     //Creacion exitosa:
@@ -120,24 +118,21 @@ function MisInmueblesDetalleAgregar(props) {
         ninmueble.arrendatario = "";
         ninmueble.fotos = fotos[0] ? fotos : ["https://cdn-icons-png.flaticon.com/512/15/15735.png"];
 
-        const guardado = await puthMiInmueble(ninmueble, props.credenciales);
+        const guardado = await putMiInmueble(ninmueble, props.credenciales);
 
         if (guardado.propietario) {
             setToastTipo(1);
             setToastMsg("Inmueble creado correctamente");
             setMensaje(true);
             setCreadoExitoso(true);
-            setTimeout(window.location.reload(), 3000);
+            setTimeout(window.location.reload(), 4000);
 
         } else {
             setToastTipo(0);
             setToastMsg("No se ha creado el inmueble:  " + guardado.message);
             setMensaje(true);
         }
-
-
     }
-
 
     function contactarArrentario(event) {
         event.preventDefault();
@@ -177,7 +172,6 @@ function MisInmueblesDetalleAgregar(props) {
                                 onBlur={(event) => { }}
                             />
                         </div>
-
                     </Row>
                     <Row>
                         <Col md={4}>
@@ -428,9 +422,10 @@ function MisInmueblesDetalleAgregar(props) {
                 show={modalShow}
                 fotoindex={index}
                 fotos={fotos}
-                actualizaFotos={actualizaFotos}
-                cerrarModal={cerrarModal}
                 onHide={() => setModalShow(false)}
+                onSubmit={(event) => {
+                    event.preventDefault(); actualizaFotos(event.target[1]._wrapperState.initialValue)
+                }}
             />
         </div >
     );

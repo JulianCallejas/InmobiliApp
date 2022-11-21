@@ -12,7 +12,7 @@ export const ModalFotosEditar = (props) => {
 
     var fotosArray = props.fotos;
 
-    const [fotoActual, setFotoActual] = useState(props.fotos[index]);
+    const [fotoActual, setFotoActual] = useState(props.fotos[index] ? props.fotos[index] : "https://cdn-icons-png.flaticon.com/512/15/15735.png");
 
     function modificaFoto(event) {
         setFotoActual(event.target.value);
@@ -20,8 +20,8 @@ export const ModalFotosEditar = (props) => {
     }
 
     function aceptarCambios() {
-        props.actualizaFotos(fotosArray);
-        props.cerrarModal();
+        //props.actualizaFotos(fotosArray);
+        props.onHide();
     }
 
     function agregarOtraFoto() {
@@ -82,8 +82,11 @@ export const ModalFotosEditar = (props) => {
                 </Modal.Body>
                 <Modal.Footer >
                     {!fotosArray[15] && <button className="button-login-s" type="button" onClick={agregarOtraFoto}>+Otra foto</button>}
-                    <button className="button-login-s" type="button" onClick={aceptarCambios}>Aceptar</button>
-                    <button className="button-login-s" type="button" onClick={props.cerrarModal}>Cancelar</button>
+                    <form onSubmit={(event) => { aceptarCambios(event) }}>
+                        <button className="button-login-s" type="submit">Aceptar</button>
+                        <input type="text" value={fotosArray} hidden onChange={()=> {} }></input>
+                        <button className="button-login-s" type="button" onClick={props.onHide}>Cancelar</button>
+                    </form>
                 </Modal.Footer>
             </Modal>
         </>

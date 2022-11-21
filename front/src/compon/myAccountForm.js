@@ -1,19 +1,16 @@
 import "../css/register.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import UsuarioRegister from "../service/usuario/usuarioRegister";
+import PatchUserData from "../service/usuario/patchUserData";
 import { MensajeToast } from "../compon/MensajeToast"
 
-function RegisterForm() {
+function MyAccountForm(props) {
 
-    const [nombre, setNombre] = useState("");
-    const [email, setEmail] = useState("");
+    const [nombre, setNombre] = useState(props.userData.nombre);
     const [contrasena, setContrasena] = useState("");
     const [confiPassword, setConfiPassword] = useState(false);
-    const [identificacion, setIdentificacion] = useState("");
-    const [telefono, setTelefono] = useState("");
-    const [regExitoso, setRegExitoso] = useState(false);
-
+    const [identificacion, setIdentificacion] = useState(props.userData.identificacion);
+    const [telefono, setTelefono] = useState(props.userData.telefono);
     const [toastTipo, setToastTipo] = useState(-1);
     const [toastMsg, setToastMsg] = useState("");
     const [mensaje, setMensaje] = useState(false);
@@ -33,47 +30,45 @@ function RegisterForm() {
 
     async function submitHandle(e) {
         e.preventDefault();
-        if (confiPassword) {
+
+        if (contrasena.length === 0) {
             var data = {
-                email: email,
                 nombre: nombre,
                 identificacion: identificacion,
                 telefono: telefono,
-                contrasena: contrasena
             };
-            const registerResponse = await UsuarioRegister(data);
-            if (registerResponse.email) {
-                setRegExitoso(true)
-            } else {
-                setRegExitoso(false);
-                setToastTipo(0);
-                setToastMsg(registerResponse.message);
-                setMensaje(true);
-            }
+        } else {
 
+            if (confiPassword) {
+                var data = {
+                    nombre: nombre,
+                    identificacion: identificacion,
+                    telefono: telefono,
+                    contrasena: contrasena
+                };
+            } else {
+                setToastTipo(0);
+                setToastMsg("Las contraseñas no coinciden, confirme la contraseña");
+                setMensaje(true);
+                return false;
+            }
+        }
+        const registerResponse = await PatchUserData(data, props.credenciales);
+        if (registerResponse.email) {
+            setToastTipo(1);
+            setToastMsg("Guardado con exito");
+            setMensaje(true);
         } else {
             setToastTipo(0);
-            setToastMsg("Las contraseñas no coinciden, confirme la contraseña");
+            setToastMsg(registerResponse.message);
             setMensaje(true);
         }
     }
 
     return (
         <div>
-            <div className="div-register-blue">
-                {regExitoso ? (
-                    <div>
-                        <form className="form-register">
-                            <div className="container-register">
-                                <h2>¡Registro Exitoso!</h2>
-                                <label><b>Ingresa con tu correo y contraseña</b></label>
-                                <Link to="/login"><button className="button-register" type="button">Login</button></Link>
-                                <Link to="/"><button className="button-register" type="button">Regresar</button></Link>
-                            </div>
-                        </form>
-                    </div>
-                        ) :(
-                <form className="form-register" onSubmit={submitHandle} >
+            <div className="div-account-blue">
+                <form className="form-account" onSubmit={submitHandle} >
                     <div className="container-register">
                         <label htmlFor="uname"><b>Nombre</b></label>
                         <input
@@ -82,19 +77,20 @@ function RegisterForm() {
                             placeholder="Enter Nombre completo"
                             id="uname"
                             name="uname"
+                            value={nombre}
                             required
-                            onBlur={(e) => setNombre(e.target.value)}
+                            onChange={(e) => setNombre(e.target.value)}
                         />
 
                         <label htmlFor="correo"><b>Correo</b></label>
                         <input
                             className="input-register"
-                            type="email"
+                            type="text"
                             placeholder="Enter email"
                             id="email"
                             name="email"
-                            required
-                            onBlur={(e) => setEmail(e.target.value)}
+                            value={props.userData.email}
+                            onChange={() => { } }
                         />
 
                         <label htmlFor="psw"><b>Password</b></label>
@@ -104,7 +100,6 @@ function RegisterForm() {
                             placeholder="Enter Contraseña"
                             id="psw"
                             name="psw"
-                            required
                             onBlur={(e) => setContrasena(e.target.value)}
                         />
 
@@ -115,7 +110,6 @@ function RegisterForm() {
                             placeholder="Enter Contraseña"
                             id="cpsw"
                             name="cpsw"
-                            required
                             onBlur={(e) => confirmarContrasena(e.target.value)}
                         />
 
@@ -126,8 +120,9 @@ function RegisterForm() {
                             placeholder="Cedula"
                             id="id"
                             name="id"
+                            value={identificacion}
                             required
-                            onBlur={(e) => setIdentificacion(e.target.value)}
+                            onChange={(e) => setIdentificacion(e.target.value)}
                         />
 
                         <label htmlFor="tlf"><b>Telefono</b></label>
@@ -137,15 +132,14 @@ function RegisterForm() {
                             placeholder="Entrar Telefono"
                             id="tlf"
                             name="tlf"
+                            value={telefono}
                             required
-                            onBlur={(e) => setTelefono(e.target.value)}
+                            onChange={(e) => setTelefono(e.target.value)}
                         />
-                        <button className="button-register" type="submit">Register</button>
-                        <Link to="/"><button className="button-register" type="button">Regresar</button></Link>
+                        <button className="button-register" type="submit">Guardar</button>
+                        <Link to="/mis-inmuebles"><button className="button-register" type="button">Regresar</button></Link>
                     </div>
                 </form>
-                    )
-            }
             </div>
             {mensaje === true && <MensajeToast tipo={toastTipo} msg={toastMsg} limpiarMensaje={setMensaje} ></MensajeToast>}
         </div>
@@ -153,4 +147,4 @@ function RegisterForm() {
 
 }
 
-export default RegisterForm;
+export default MyAccountForm;

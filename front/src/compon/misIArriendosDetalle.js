@@ -1,7 +1,7 @@
 import "../css/miInmueble.css";
 import { MensajeToast } from "../compon/MensajeToast"
 import { ModalFotos } from "../compon/ModalFotos"
-import { MisInmueblesContratosList } from "../compon/misInmueblesContratosList"
+import { MisArriendosContratosList } from "../compon/misArriendosContratosList"
 import React, { useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel';
 import Container from 'react-bootstrap/Container';
@@ -13,7 +13,8 @@ import equis from "../img/svg/equis.png"
 import { Link } from "react-router-dom";
 
 
-function MisInmueblesDetalleArriendo(props) {
+
+function MisArriendosDetalle(props) {
 
     //estado del mensaje:
     const [toastTipo, setToastTipo] = useState(0);
@@ -35,10 +36,10 @@ function MisInmueblesDetalleArriendo(props) {
         window.location.reload();
     }
 
-    
+
     function contactarArrentario(event) {
         event.preventDefault();
-        console.log("boton")
+        
         if (props.data.especificaciones.parqueadero) {
             setToastTipo(1);
             setToastMsg("Datos de contacto: \n" +
@@ -68,7 +69,7 @@ function MisInmueblesDetalleArriendo(props) {
                         </Col>
                         <Col>
                             <div>
-                                <h1 style={{ textAlign: "center", marginLeft: 55 }}>Arrendado</h1>
+                                <h1 style={{ textAlign: "center", marginLeft: 55 }}>Mi Arriendo</h1>
                             </div>
                         </Col>
                     </Row>
@@ -184,7 +185,7 @@ function MisInmueblesDetalleArriendo(props) {
                             </h3>
                             <div style={{ marginTop:20 }}>
                                 <h2 style={{ textAlign: "center", marginLeft: 55 }}>Contratos</h2>
-                                <MisInmueblesContratosList data={props.data }/>
+                                <MisArriendosContratosList data={props.data }/>
                             </div>
 
                             <div style={{ alignContent: "center", textAlign: "center", fontSize: 22 }} >
@@ -220,4 +221,4 @@ function MisInmueblesDetalleArriendo(props) {
     );
 }
 
-export default MisInmueblesDetalleArriendo;
+export default MisArriendosDetalle;

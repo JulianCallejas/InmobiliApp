@@ -9,7 +9,7 @@ function LoggedForm(props) {
 		<form className="form-login">
 			<div className="container">
 				<h3 style={{ textAlign: "center" }} ><b>Bienvenido {email}</b></h3>
-				<Link to="/"><button className="button-login" id="resgisterButton" type="button">Ir al Home</button></Link>
+				<Link to="/mis-inmuebles"><button className="button-login" id="resgisterButton" type="button">Ir al Home</button></Link>
 				<Link to="/"><button className="button-login" id="resgisterButton" type="button" onClick={Logout} >Cerrar sesion</button></Link>
 			</div>
 		</form>

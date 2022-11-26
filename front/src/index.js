@@ -11,7 +11,7 @@ import Login from "./Routes/login";
 import Register from "./Routes/register";
 import MisInmuebles from "./Routes/mis-inmuebles";
 
-import Prueba from "./Routes/botonpruebas";
+import MyAccount from "./Routes/myAccount";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -34,7 +34,7 @@ root.render(
                     </Route>
                     <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />
-                    <Route path="prueba" element={<Prueba />} />
+                    <Route path="account" element={<MyAccount />} />
                 </Route>
             </Routes>
         </BrowserRouter>

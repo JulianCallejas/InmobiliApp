@@ -1,10 +1,8 @@
 import "../css/miInmueble.css";
 import { MensajeToast } from "../compon/MensajeToast"
 import { ModalFotosEditar } from "../compon/ModalFotosEditar"
-import { ModalConfirma } from "../compon/ModalConfirma"
-import { MisInmueblesContratosList } from "../compon/misInmueblesContratosList"
-import patchMiInmueble from "../service/inmuebles/patchMiInmueble"
-import deleteMiInmueble from "../service/inmuebles/deleteMiInmueble"
+import putMiInmueble from "../service/inmuebles/putMiInmueble"
+import fechaActualString from "../service/inmuebles/fechaActualString"
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import Carousel from 'react-bootstrap/Carousel';
@@ -17,28 +15,36 @@ import equis from "../img/svg/equis.png"
 
 
 
+function MisInmueblesDetalleAgregar(props) {
 
-function MisInmueblesDetalle(props) {
+    function irMisInmuebles(event) {
+        //props.recargarMisInmuebles();
+        event.preventDefault();
+        props.setContenido({ contenido: "misInmuebles", inmueble: -1 });
+        window.location.reload();
+    }
 
     //console.log(props.data)
 
     //variables del formulario:
-    const [titulo, setTtitulo] = useState(props.data.titulo);
-    const [ciudad, setCiudad] = useState(props.data.especificaciones.ciudad);
-    const [tipoInmueble, setTipoInmueble] = useState(props.data.especificaciones.tipoInmueble);
-    const [valorArriendo, setValorArriendo] = useState(props.data.especificaciones.valorArriendo.toLocaleString());
-    const [valorArriendo1, setValorArriendo1] = useState(props.data.especificaciones.valorArriendo);
-    const [valorAdmin, setValorAdmin] = useState(props.data.especificaciones.valorAdmin.toLocaleString());
-    const [valorAdmin1, setValorAdmin1] = useState(props.data.especificaciones.valorAdmin);
-    const [tamano, setTamano] = useState(props.data.especificaciones.tamaño);
-    const [estrato, setEstrato] = useState(props.data.especificaciones.estrato);
-    const [habitaciones, setHabitaciones] = useState(props.data.especificaciones.habitaciones);
-    const [banos, setBanos] = useState(props.data.especificaciones.baños);
-    const [parqueadero, setParqueadero] = useState(props.data.especificaciones.parqueadero);
-    const [direccion, setDireccion] = useState(props.data.especificaciones.direccion);
-    const [descripcion, setDescripcion] = useState(props.data.descripcion);
-    const [fotos, setFotos] = useState(props.data.fotos);
+    const [titulo, setTtitulo] = useState("");
+    const [ciudad, setCiudad] = useState("");
+    const [tipoInmueble, setTipoInmueble] = useState("");
+    const [valorArriendo, setValorArriendo] = useState("");
+    const [valorArriendo1, setValorArriendo1] = useState("");
+    const [valorAdmin, setValorAdmin] = useState("");
+    const [valorAdmin1, setValorAdmin1] = useState("");
+    const [tamano, setTamano] = useState("");
+    const [estrato, setEstrato] = useState("");
+    const [habitaciones, setHabitaciones] = useState("");
+    const [banos, setBanos] = useState("");
+    const [parqueadero, setParqueadero] = useState(false);
+    const [direccion, setDireccion] = useState("");
+    const [descripcion, setDescripcion] = useState("");
+    const [fotos, setFotos] = useState([]);
 
+    //Creacion exitosa:
+    const [creadoExitoso, setCreadoExitoso] = useState(false);
 
     //estado del mensaje:
     const [toastTipo, setToastTipo] = useState(0);
@@ -47,10 +53,7 @@ function MisInmueblesDetalle(props) {
 
     //estado del modal:
     const [modalShow, setModalShow] = useState(false);
-    const [modalConfirmaShow, setModalConfirmaShow] = useState(false);
-    const [tituloConfirma, setTituloConfirma] = useState("");
-    const [mensajeConfirma, setMensajeConfirma] = useState("");
-    
+
     //estado del carrusel:
     const [index, setIndex] = useState(0);
     const handleSelect = (selectedIndex, e) => {
@@ -60,6 +63,7 @@ function MisInmueblesDetalle(props) {
     function actualizaCampo(event, setCampo) {
         setCampo(event.target.value)
     }
+
     function actualizaNumero(event, setCampo, setCampo1) {
         if (!isNaN(event.target.value)) {
             setCampo1(event.target.value);
@@ -85,82 +89,73 @@ function MisInmueblesDetalle(props) {
         setFotos(fotos);
     }
 
+
     function cerrarModal() {
         setModalShow(false);
     }
 
-    function cerrarModalConfirmar() {
-        setModalConfirmaShow(false);
-    }
-
-    function irMisInmuebles(event) {
+    async function crearInmueble(event) {
         event.preventDefault();
-        props.setContenido({ contenido: "misInmuebles", inmueble: -1 });
-        window.location.reload();
-    }
-
-    async function guardarInmueble(event) {
-        event.preventDefault();
-        var inmuebleEditado = {
+        var ninmueble = {
             especificaciones: {},
-            _id: {},
 
         };
-        inmuebleEditado.propietario = props.credenciales.email;
-        inmuebleEditado.titulo = titulo;
-        inmuebleEditado.descripcion = descripcion;
-        inmuebleEditado.especificaciones.ciudad = ciudad;
-        inmuebleEditado.especificaciones.direccion = direccion;
-        inmuebleEditado.especificaciones.tipoInmueble = tipoInmueble;
-        inmuebleEditado.especificaciones.valorArriendo = valorArriendo1;
-        inmuebleEditado.especificaciones.valorAdmin = valorAdmin1;
-        inmuebleEditado.especificaciones.tamaño = tamano;
-        inmuebleEditado.especificaciones.estrato = estrato;
-        inmuebleEditado.especificaciones.habitaciones = habitaciones;
-        inmuebleEditado.especificaciones.baños = banos;
-        inmuebleEditado.especificaciones.parqueadero = parqueadero;
-        inmuebleEditado.estadoPublicacion = props.data.estadoPublicacion;
-        inmuebleEditado.fechaPublicacion = props.data.fechaPublicacion;
-        inmuebleEditado.arrendatario = "";
-        inmuebleEditado.fotos = fotos;
-        inmuebleEditado.idInmueble = props.data.idInmueble;
+        ninmueble.propietario = props.credenciales.email;
+        ninmueble.titulo = titulo;
+        ninmueble.descripcion = descripcion;
+        ninmueble.especificaciones.ciudad = ciudad;
+        ninmueble.especificaciones.direccion = direccion;
+        ninmueble.especificaciones.tipoInmueble = tipoInmueble;
+        ninmueble.especificaciones.valorArriendo = valorArriendo1;
+        ninmueble.especificaciones.valorAdmin = valorAdmin1 ? valorAdmin1: 0;
+        ninmueble.especificaciones.tamaño = tamano ? tamano:"";
+        ninmueble.especificaciones.estrato = estrato ? estrato:"";
+        ninmueble.especificaciones.habitaciones = habitaciones ? habitaciones:"";
+        ninmueble.especificaciones.baños = banos ? banos: "";
+        ninmueble.especificaciones.parqueadero = parqueadero;
+        ninmueble.estadoPublicacion = "Publicado";
+        ninmueble.fechaPublicacion = fechaActualString();
+        ninmueble.arrendatario = "";
+        ninmueble.fotos = fotos[0] ? fotos : ["https://cdn-icons-png.flaticon.com/512/15/15735.png"];
 
-        const guardado = await patchMiInmueble(inmuebleEditado, props.credenciales);
-
+        const guardado = await putMiInmueble(ninmueble, props.credenciales);
+        
         if (guardado.propietario) {
             setToastTipo(1);
-            setToastMsg("Datos guardados correctamente");
+            setToastMsg("Inmueble creado correctamente");
             setMensaje(true);
-            
-        } else {
-            setToastTipo(0);
-            setToastMsg("No se guardaron los cambios:  " + guardado.message);
-            setMensaje(true);
-        }
-    }
-
-    async function borrarInmueble(event) {
-        event.preventDefault();
-        cerrarModalConfirmar();
-        const eliminado = await deleteMiInmueble(props.data.idInmueble, props.credenciales);
-
-        if (eliminado.propietario) {
-            setToastTipo(1);
-            setToastMsg("Inmueble eliminado correctamente");
-            setMensaje(true);
+            setCreadoExitoso(true);
             setTimeout(window.location.reload(), 4000);
 
         } else {
             setToastTipo(0);
-            setToastMsg("No se ha creado el inmueble:  " + eliminado.message);
+            setToastMsg("No se ha creado el inmueble:  " + guardado.message);
             setMensaje(true);
         }
     }
 
+    function contactarArrentario(event) {
+        event.preventDefault();
+        if (parqueadero) {
+            setToastTipo(1);
+            setToastMsg("Datos de contacto: \n" +
+                props.data.propietario);
+            setMensaje(true);
+
+        } else {
+            setToastTipo(0);
+            setToastMsg("Primero debe registrarse");
+            setMensaje(true);
+        }
+    }
+
+    function tomarArriendo(e) {
+        e.preventDefault();
+    }
 
     return (
         <div>
-            <form onSubmit={(event) => { guardarInmueble(event) }}>
+            <form onSubmit={(event) => { crearInmueble(event) }}>
                 <Container fluid>
                     <Row >
                         <div style={{ maxWidth: 200 }}>
@@ -177,25 +172,38 @@ function MisInmueblesDetalle(props) {
                                 onBlur={(event) => { }}
                             />
                         </div>
-
                     </Row>
                     <Row>
                         <Col md={4}>
                             <Carousel activeIndex={index} onSelect={handleSelect}>
-                                {props.data.fotos.map((foto, ind) => {
-                                    return (
-                                        <Carousel.Item key={ind}>
-                                            <div
-                                                className="contect-carousel"
-                                                style={{
-                                                    backgroundImage: 'url("' + foto + '")',
-                                                    backgroundSize: "cover"
-                                                }}
-                                                key={index}
-                                                onClick={() => setModalShow(true)}
-                                            />
-                                        </Carousel.Item>)
-                                })}
+                                {fotos[0] ? (
+                                    fotos.map((foto, ind) => {
+                                        return (
+                                            <Carousel.Item key={ind}>
+                                                <div
+                                                    className="contect-carousel"
+                                                    style={{
+                                                        backgroundImage: 'url("' + foto + '")',
+                                                        backgroundSize: "cover"
+                                                    }}
+                                                    key={index}
+                                                    onClick={() => setModalShow(true)}
+                                                />
+                                            </Carousel.Item>
+                                        );
+                                    })
+                                ) : (
+                                    <Carousel.Item key="AgregarInmuebleNuevaFoto">
+                                        <div
+                                            className="contect-carousel-nuevo"
+                                            style={{
+                                                backgroundImage: "url(https://cdn-icons-png.flaticon.com/512/15/15735.png)",
+                                            }}
+                                            key={index}
+                                            onClick={() => setModalShow(true)}
+                                        />
+                                    </Carousel.Item>
+                                )}
                             </Carousel>
                         </Col>
                         <Col>
@@ -280,7 +288,7 @@ function MisInmueblesDetalle(props) {
                                                     id="titulomisinmueblesdetalle"
                                                     name="titulomisinmueblesdetalle"
                                                     value={tamano}
-                                                    onChange={(event) => actualizaNumero(event, setTamano, setTamano  )}
+                                                    onChange={(event) => actualizaNumero(event, setTamano, setTamano)}
                                                     onBlur={(e) => { }} />
 
                                             </h4>
@@ -336,13 +344,13 @@ function MisInmueblesDetalle(props) {
                                                 Parqueadero: {parqueadero ?
                                                     <Link>
                                                         <img src={chulo} alt="Si" className="user_icon"
-                                                        onClick={() => { setParqueadero(!parqueadero) }}
+                                                            onClick={() => { setParqueadero(!parqueadero) }}
                                                         />
                                                     </Link>
                                                     :
                                                     <Link>
-                                                    <img src={equis} alt="No" className="user_icon"
-                                                        onClick={() => { setParqueadero(!parqueadero) }}
+                                                        <img src={equis} alt="No" className="user_icon"
+                                                            onClick={() => { setParqueadero(!parqueadero) }}
                                                         />
                                                     </Link>
                                                 }
@@ -350,7 +358,7 @@ function MisInmueblesDetalle(props) {
                                         </td>
                                         <td>
                                             <h4>
-                                                Direccion:
+                                                **Direccion:
                                                 <input
                                                     className="mi-inmueble-especificaciones"
                                                     type="text"
@@ -366,40 +374,36 @@ function MisInmueblesDetalle(props) {
                                     </tr>
                                 </tbody>
                             </Table>
-                            
+
                             <textarea
                                 className="form-control col-sm-3"
-                                style={{ fontSize: "26", fontWeight: 600, minHeight:90 }}
-                                    type="text"
-                                    placeholder="**Descripcion"
-                                    id="titulomisinmueblesdetalle"
-                                    name="titulomisinmueblesdetalle"
-                                    required
-                                    value={descripcion}
+                                style={{ fontSize: "26", fontWeight: 600, minHeight: 90 }}
+                                type="text"
+                                placeholder="**Desrcipcion"
+                                id="titulomisinmueblesdetalle"
+                                name="titulomisinmueblesdetalle"
+                                required
+                                value={descripcion}
                                 onChange={(event) => actualizaCampo(event, setDescripcion)}
-                                    onBlur={(e) => { }} />
-                            
+                                onBlur={(e) => { }} />
 
                             <div style={{ alignContent: "center", textAlign: "center", fontSize: 22 }} >
-                                <button className="button-login"
-                                    style={{ fontSize: 18, width: 260 }}
-                                >
-                                    Guardar
-                                </button>
-
-                                <button className="button-eliminar"
-                                    type="button"
-                                    style={{ fontSize: 18, width: 260 }}
-                                    onClick={() => {
-                                        setToastTipo(0);
-                                        setModalConfirmaShow(true);
-                                        setTituloConfirma("¿Eliminar Inmueble?");
-                                        setMensajeConfirma("Una vez borrado el inmueble no prodrá recuperar la información")
-                                    }}
-                                >
-                                    Eliminar
-                                </button>
-
+                                {creadoExitoso ? (
+                                    <button className="button-login"
+                                        style={{ fontSize: 18, width: 260 }}
+                                        onClick={(event) => { crearInmueble(event) }}
+                                        disabled
+                                    >
+                                        Publicar
+                                    </button>
+                                ) : (
+                                        <button className="button-login"
+                                            type="submit"
+                                        style={{ fontSize: 18, width: 260 }}
+                                    >
+                                        Publicar
+                                    </button>
+                                )}
                                 <button className="button-login"
                                     type="button"
                                     style={{ fontSize: 18, width: 260 }}
@@ -408,12 +412,6 @@ function MisInmueblesDetalle(props) {
                                     Regresar
                                 </button>
                             </div>
-                            {props.data.contratos[0] && (
-                                <div style={{ marginTop: 20 }}>
-                                    <h2 style={{ textAlign: "center", marginLeft: 55 }}>Historico de Contratos</h2>
-                                    <MisInmueblesContratosList data={props.data} />
-                                </div>
-                            )}
                         </Col>
                     </Row>
                 </Container>
@@ -426,21 +424,12 @@ function MisInmueblesDetalle(props) {
                 fotos={fotos}
                 onHide={() => setModalShow(false)}
                 onSubmit={(event) => {
-                    event.preventDefault(); actualizaFotos(event.target[1]._wrapperState.initialValue) }}
-            />
-
-            <ModalConfirma
-                show={modalConfirmaShow}
-                tipo={toastTipo}
-                titulo={tituloConfirma}
-                mensaje={mensajeConfirma}
-                actualizaFotos={actualizaFotos }
-                onSubmit={borrarInmueble}
-                onHide={() => cerrarModalConfirmar(false)}
+                    event.preventDefault(); actualizaFotos(event.target[1]._wrapperState.initialValue)
+                }}
             />
         </div >
     );
 }
 
 
-export default MisInmueblesDetalle;
+export default MisInmueblesDetalleAgregar;

@@ -12,7 +12,7 @@ export const ModalFotosEditar = (props) => {
 
     var fotosArray = props.fotos;
 
-    const [fotoActual, setFotoActual] = useState(props.fotos[index]);
+    const [fotoActual, setFotoActual] = useState(props.fotos[index] ? props.fotos[index] : "https://cdn-icons-png.flaticon.com/512/15/15735.png");
 
     function modificaFoto(event) {
         setFotoActual(event.target.value);
@@ -20,11 +20,45 @@ export const ModalFotosEditar = (props) => {
     }
 
     function aceptarCambios() {
-        props.actualizaFotos(fotosArray);
-        props.cerrarModal();
+        //props.actualizaFotos(fotosArray);
+        props.onHide();
+    }
+
+    function agregarOtraFoto() {
+        if (!fotosArray[15]) {
+            fotosArray.push("https://cdn-icons-png.flaticon.com/512/15/15735.png");
+            setIndex(index + (fotosArray.length - index - 1));
+        }
+    }
+
+    function borrarFoto() {
+
+        if (index === 0) {
+            setIndex(index + 1)
+            var indexdel = index - 1;
+        } else {
+            setIndex(index - 1)
+            var indexdel = index + 1;
+        };
+
+        fotosArray.splice(indexdel, 2);
+        //fotosArray.pop();
     }
 
 
+    const convertirBase64 = (archivos) => {
+        Array.from(archivos).forEach(archivo => {
+            var reader = new FileReader();
+            reader.readAsDataURL(archivo);
+            reader.onload = function () {
+                var base64 = reader.result
+                setFotoActual(base64);
+                fotosArray[index] = (base64);
+
+            }
+
+        });
+    };
 
     return (
         <>
@@ -69,14 +103,25 @@ export const ModalFotosEditar = (props) => {
                                 onChange={(event) => { modificaFoto(event) }}
                                 onBlur={(event) => { }}
                             />
+                            <br />
 
+                            <input type="file" onChange={(event) => { convertirBase64(event.target.files) }} style={{ display: "", button: "black" }} />
+
+
+
+                            <br />
                         </p>
-                        
+
                     </div>
                 </Modal.Body>
                 <Modal.Footer >
-                    <button className="button-login-s" type="button" onClick={aceptarCambios}>Aceptar</button>
-                    <button className="button-login-s" type="button" onClick={props.cerrarModal}>Cancelar</button>
+                    {!fotosArray[15] && <button className="button-login-s" type="button" onClick={agregarOtraFoto}>+Otra foto</button>}
+                    <form onSubmit={(event) => { aceptarCambios(event) }}>
+                        {/*<button className="button-login-s" type="button" onClick={borrarFoto}>-Borrar foto</button>*/}
+                        <button className="button-login-s" type="submit">Aceptar</button>
+                        <input type="text" value={fotosArray} hidden onChange={() => { }}></input>
+                        <button className="button-login-s" type="button" onClick={props.onHide}>Cancelar</button>
+                    </form>
                 </Modal.Footer>
             </Modal>
         </>

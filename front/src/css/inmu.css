@@ -98,3 +98,22 @@
 .carousel-inner {
     max-width: 510px;
 }
+
+.contect-carousel-nuevo {
+    box-sizing: border-box;
+    width: 474px;
+    height: 408px;
+    left: 57px;
+    top: 181px;
+    flex-wrap: wrap;
+    border: 1px solid #5F9DF7;
+    filter: drop-shadow(1px 4px 4px #5F9DF7);
+    border-radius: 54px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('https://img.freepik.com/vector-gratis/hermosa-casa_24877-50819.jpg?w=2000'),
+}

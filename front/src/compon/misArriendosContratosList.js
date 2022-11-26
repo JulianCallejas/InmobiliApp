@@ -4,16 +4,16 @@ import Table from 'react-bootstrap/Table';
 import chulo from "../img/svg/chulo.png"
 import equis from "../img/svg/equis.png"
 
-export const MisInmueblesContratosList = (props) => {
+export const MisArriendosContratosList = (props) => {
 
     return (
         <div>
             <Stack gap={1}>
-                <Accordion className="contrato-acordion" id="acordion1">
+                <Accordion className="contrato-acordion" id="ar-acordion1">
                     {props.data.contratos.map((contrato, index) => {
                         return (
-                            <Accordion.Item eventKey={"'cont-acor" + index + "'"} key={"'cont-acork" + index + "'"}>
-                                <Accordion.Header >
+                            <Accordion.Item eventKey={"'arr-cont-acor" + index + "'"} key={"'arrk-cont-acor" + index + "'" }>
+                                <Accordion.Header key={"'arr-cont-headacor" + index + "'"}>
                                     {"Contrato #" + contrato.idContrato + "  Activo: "}
                                     {contrato.activo ?
                                         <img src={chulo} alt="Si" className="user_icon"
@@ -25,9 +25,9 @@ export const MisInmueblesContratosList = (props) => {
                                         />
                                     }
                                 </Accordion.Header>
-                                <Accordion.Body>
-                                    <Table responsive key={"table-contratos-misInmuebles-" + index}>
-                                        <tbody style={{ borderBottom: "#FF731D" }} key={"tbody-contratos-misInmuebles-" + index}>
+                                <Accordion.Body key={"'ar-cont-bodacor" + index + "'"}>
+                                    <Table responsive key={"ar-table-contratos-misInmuebles-" + index}>
+                                        <tbody style={{ borderBottom: "#FF731D" }} key={"ar-tbody-contratos-misInmuebles-" + index}>
                                             <tr>
                                                 <td>
                                                     <h4>
@@ -43,24 +43,24 @@ export const MisInmueblesContratosList = (props) => {
                                             <tr>
                                                 <td>
                                                     <h4>
-                                                        {"Arrendatario: " + contrato.arrendatario[0].nombre}
+                                                        {"Propietario: " + props.data.propietario[0].nombre}
                                                     </h4>
                                                 </td>
                                                 <td>
                                                     <h4>
-                                                        {"Identificacion: " + contrato.arrendatario[0].identificacion}
+                                                        {"Duracion Contrato: " + contrato.duracion + " meses"}
                                                     </h4>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <h4>
-                                                        {"Telefono: " + contrato.arrendatario[0].telefono}
+                                                        {"Telefono: " + props.data.propietario[0].telefono}
                                                     </h4>
                                                 </td>
                                                 <td>
                                                     <h4>
-                                                        {"Email: " + contrato.arrendatario[0].email}
+                                                        {"Email: " + props.data.propietario[0].email}
                                                     </h4>
                                                 </td>
                                             </tr>

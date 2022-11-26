@@ -18,7 +18,7 @@ export const MensajeToast = (props) => {
         <div>
             {showToast === true &&
                 <ToastContainer position="top-center" className="p-3 text-white" containerPosition="fixed">
-                    <Toast onClose={cerrarMensaje} bg={color[props.tipo]} delay={3000} autohide>
+                    <Toast onClose={cerrarMensaje} bg={color[props.tipo]} delay={4000} autohide>
                         <Toast.Header>
                             <strong className="me-auto">{tipo[props.tipo]}</strong>
                         </Toast.Header>

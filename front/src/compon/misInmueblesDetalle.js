@@ -434,6 +434,7 @@ function MisInmueblesDetalle(props) {
                 tipo={toastTipo}
                 titulo={tituloConfirma}
                 mensaje={mensajeConfirma}
+                actualizaFotos={actualizaFotos }
                 onSubmit={borrarInmueble}
                 onHide={() => cerrarModalConfirmar(false)}
             />

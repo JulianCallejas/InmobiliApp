@@ -119,7 +119,7 @@ function MisInmueblesDetalleAgregar(props) {
         ninmueble.fotos = fotos[0] ? fotos : ["https://cdn-icons-png.flaticon.com/512/15/15735.png"];
 
         const guardado = await putMiInmueble(ninmueble, props.credenciales);
-
+        
         if (guardado.propietario) {
             setToastTipo(1);
             setToastMsg("Inmueble creado correctamente");

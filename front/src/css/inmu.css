@@ -72,11 +72,12 @@
 
 
 .contect-carousel {
+    position:relative ;
     box-sizing: border-box;
-    width: 474px;
+    width: 500px;
     height: 408px;
-    left: 57px;
-    top: 181px;
+    left: 0px;
+    top: 0px;
     flex-wrap: wrap;
     border: 1px solid #5F9DF7;
     filter: drop-shadow(1px 4px 4px #5F9DF7);

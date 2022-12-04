@@ -28,7 +28,7 @@ export const ModalFotos = (props) => {
                                 <Carousel.Item key={ind}>
                                     <div>
                                         <img
-                                            className="d-block w-100"
+                                            className=""
                                             src={foto}
                                             alt="First slide"
                                         />

@@ -75,7 +75,7 @@ function MisArriendosDetalle(props) {
                     </Row>
                     <Row>
                         <Col md={4}>
-                            <Carousel activeIndex={index} onSelect={handleSelect}>
+                            <Carousel activeIndex={index} onSelect={handleSelect} style={{ width: 500 }}>
                                 {props.data.fotos.map((foto, ind) => {
                                     return (
                                         <Carousel.Item key={ind}>

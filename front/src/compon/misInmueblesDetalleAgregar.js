@@ -175,7 +175,7 @@ function MisInmueblesDetalleAgregar(props) {
                     </Row>
                     <Row>
                         <Col md={4}>
-                            <Carousel activeIndex={index} onSelect={handleSelect}>
+                            <Carousel activeIndex={index} onSelect={handleSelect} style={{ width: 500 }}>
                                 {fotos[0] ? (
                                     fotos.map((foto, ind) => {
                                         return (
